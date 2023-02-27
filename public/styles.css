@@ -1,0 +1,65 @@
+/* new styles
+    purple: #6c49ed;
+    pink: #cd34b9;
+    orange: #ff6e49;
+    footer: #13183e; (blue)
+
+*/
+
+/****************************************** tags *******************************************/
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #25CCF7;
+    /* overflow: hidden; */
+}
+
+button{
+    background-color: #13183e;
+    border: none;
+    border-radius: 30px;
+    color: #ffff;
+    text-align: center;
+}
+
+td{
+    padding-left: 20px;
+}
+h1{
+    color: #13183e;
+    font-family: 'Pacifico', cursive;
+}
+
+/****************************************** Class *******************************************/
+
+
+.navbar{
+    background-color: #ffff;
+}
+.image{
+    position: absolute;
+    top: 90px;
+    right: 20%;
+    background-image: url(./images/des.png);
+     height: 55vh;
+    width: 10vw;
+    /* border-radius: 100px;
+    background: rgb(205,52,185);
+    background: linear-gradient(90deg, rgba(205,52,185,1) 0%, rgba(255,110,73,1) 100%); */
+}
+.explore{
+    margin-left: 200px;
+    background: rgb(255,110,73);
+    background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
+}
+
+.footer{
+    color: #ffff;
+    background-color: #13183e;
+    height: 30px;   
+    text-align: center;
+}
+
+
+/****************************************** ID *******************************************/
