@@ -12,7 +12,7 @@ const btnStyle = {
   height: "45px",
   width: "100px",
   fontSize: "20px",
-  marginRight: "200px"
+  marginRight: "10%"
 }
 
 function Navbar() {

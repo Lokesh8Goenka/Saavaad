@@ -30,6 +30,9 @@ h1{
     color: #13183e;
     font-family: 'Pacifico', cursive;
 }
+p{
+    color: #ff6e49;
+}
 
 /****************************************** Class *******************************************/
 
@@ -39,19 +42,31 @@ h1{
 }
 .image{
     position: absolute;
-    top: 90px;
-    right: 20%;
-    background-image: url(./images/des.png);
-     height: 55vh;
-    width: 10vw;
+    top: 20px;
+    right: 5vw;
+    height: 400px;
     /* border-radius: 100px;
     background: rgb(205,52,185);
     background: linear-gradient(90deg, rgba(205,52,185,1) 0%, rgba(255,110,73,1) 100%); */
 }
+/* .imageRotate{
+    rotate: 45deg;
+    position: absolute;
+    top: 10px;
+    right: 5vw;
+    height: 80vh;
+    width: 10vw;
+    background: rgb(205,52,185);
+    background: linear-gradient(0deg, rgba(205,52,185,1) 0%, rgba(19,24,62,1) 100%);
+} */
 .explore{
     margin-left: 200px;
     background: rgb(255,110,73);
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
+}
+
+.card{
+    margin: 50% 30%;
 }
 
 .footer{

@@ -1,4 +1,5 @@
 import React from "react";
+import des from "../images/des.png";
 
 const btnStyle = {
     width: "100px", 
@@ -6,17 +7,18 @@ const btnStyle = {
     borderRadius: "25px",
     fontSize : "25px"
   }
-
+const h1Style={
+    borderWidth: '20px',
+    marginLeft: "200px",
+    fontSize: "20vh",
+}
 
 function Home(){
     return(
         <div className="main">
-            <h1 className="heading" style={{borderWidth: '20px', marginLeft: "200px", fontSize: "20vh" }}>Just <br />Cl!ck It!</h1><br />
+            <h1 className="heading" style={h1Style}>Just <br />Cl!ck It!</h1><br />
             <p style={{marginLeft: "250px", fontFamily: "'Shantell Sans', cursive"}}>A new and easy way to have you own EBooks.</p>
             <br /><br />
-            <div className="image">
-                sdfhgbsndlrkgsbjnrgkjsbjbfg
-            </div>
             <table>
                 <tr>
                     <td><button className="explore" style={btnStyle}>Explore</button></td>
