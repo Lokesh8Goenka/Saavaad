@@ -23,6 +23,12 @@ button{
     text-align: center;
 }
 
+hr {
+    height: 50px;
+    border: none;
+    background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
+}
+
 td{
     padding-left: 20px;
 }

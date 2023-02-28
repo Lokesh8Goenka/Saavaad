@@ -1,5 +1,5 @@
 import React from "react";
-import des from "../images/des.png";
+// import des from "../images/des.png";
 
 const btnStyle = {
     width: "100px", 

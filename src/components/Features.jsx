@@ -8,7 +8,7 @@ import contract from "../images/contract.png";
 function Features() {
   return(
     <div style={{marginTop: "10%"}}>
-      <hr style={{borderTop: "30px", backgroundColor: "black"}} />
+      <hr />
       <div class="container text-center">
         <div class="row">
         {/* col-lg-4 col-md-6 */}
@@ -62,6 +62,7 @@ function Features() {
           </div>
         </div>
       </div>  
+      <hr />
     </div>
     
   );
