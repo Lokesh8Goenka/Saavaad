@@ -27,8 +27,12 @@ td{
     padding-left: 20px;
 }
 
+p{
+    color: #ff6e49;
+}
+
 h1{
-    color: #13183e;
+    color: #383b4e;
     font-family: 'Pacifico', cursive;
 }
 
@@ -66,9 +70,6 @@ h1{
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
 }
 
-.card-title{
-    color: #ff6e49;
-}
 
 .login{
     height: 100vh;
@@ -101,8 +102,8 @@ h1{
 }
 
 
-/* 
-#header {
+
+/* #header {
     background-color: grey;
     padding: 50px 10px;
     color: black;
@@ -111,15 +112,14 @@ h1{
     top: 0;
     height: 100%;
     transition: 2s;
-  } */
-/* 
+  }
   .progress-bar {
     height: 10px;
     background: #005357;
-    width: 0%;
+    width: 100%;
   }
 
-  .container {
+  .cont {
     position: fixed;
     top: 0;
     z-index: 1;
