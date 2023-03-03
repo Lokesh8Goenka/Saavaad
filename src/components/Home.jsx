@@ -35,24 +35,17 @@ function Home(){
             <p style={{marginLeft: "250px", fontFamily: "'Shantell Sans', cursive"}}>A new and easy way to have you own EBooks.</p>
             <br /><br />
                 {/* <button className="explore" style={btnStyle}>Explore</button>*/}
-            {/* <Popup trigger=
-                {<button className="explore" style={btnStyle}> Explore </button>}
-                position="right center">
-                <div className="popup">
-                    <h3>Want To save your Cl!cks?</h3>
-                    <h5><button>Login</button></h5>
-                </div>
-            </Popup> */}
+        
 
             <Popup trigger=
                 {<button className="explore" style={btnStyle}> Explore </button>}
                 modal nested>
                 {
-                            <div className=".popup-content">
+                            <div className=".popup-content" >
                                 <h2>Want To save your Cl!cks?</h2>
                                 {/* <img style={{height: "30vh", float: "right", marginRight: "10vw"}} src={Safe} alt="save doc" /> */}
                                 <br /><br />
-                                <h5><button className="loginbtn">Login</button></h5>
+                                <h5><button>Login</button></h5>
                             </div>
                 }
             </Popup>

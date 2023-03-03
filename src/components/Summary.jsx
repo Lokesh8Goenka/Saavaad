@@ -32,7 +32,7 @@ function Summary() {
                 <form method="post" onSubmit={handleSubmit}>
                 <button className="submitBtn" type="submit">Summarize</button>
                 <label style={{color: "#fff", float: "right", marginRight: "10vw"}}>
-                    <textarea
+                    <textarea style={{backgroundColor: "transparent"}}
                     name="postContent"
                     defaultValue="Your Text Here"
                     rows={18}

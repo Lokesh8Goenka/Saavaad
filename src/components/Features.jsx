@@ -11,7 +11,7 @@ const cardTitle = {
 
 function Features() {
   return(
-    <div style={{marginTop: "5%"}}>
+    <div className="features" style={{marginTop:"5%", padding: "1px"}}>
       <div className="toolsheading">
           <h2 style={{fontSize: "50px"}}> Tools </h2>
       </div>
@@ -19,7 +19,7 @@ function Features() {
         <div className="row">
         {/* col-lg-4 col-md-6 */}
           <div className="col"> 
-                <div className="card" style={{width: "18rem", marginRight: "5vw", border: "none"}}>
+                <div className="card-transparent" style={{width: "18rem", marginRight: "5vw", border: "none"}}>
                   <img src={contract} className="card-img-top m-auto" alt="..." style={{width: "100px"}} />
                     <div className="card-body">
                       <h5 className="card-title" style={cardTitle}>Summary</h5>
@@ -28,7 +28,7 @@ function Features() {
                 </div>
           </div>
           <div className="col">
-                <div className="card" style={{width: "18rem", marginRight: "5vw", border: "none"}}>
+                <div className="card-transparent" style={{width: "18rem", marginRight: "5vw", border: "none"}}>
                   <img src={ebook} className="card-img-top m-auto" alt="..." style={{width: "100px"}} />
                     <div className="card-body">
                     <h5 className="card-title"  style={cardTitle}>Ebook</h5>
@@ -37,7 +37,7 @@ function Features() {
                 </div>
           </div>
           <div className="col">
-                <div className="card" style={{width: "18rem", border: "none"}}>
+                <div className="card-transparent" style={{width: "18rem", border: "none"}}>
                   <img src={poem} className="card-img-top m-auto" alt="..." style={{width: "100px"}} />
                     <div className="card-body">
                     <h5 className="card-title"  style={cardTitle}>Poem</h5>
@@ -46,7 +46,7 @@ function Features() {
                 </div>
           </div>
           <div className="col">
-                <div className="card" style={{width: "18rem", marginRight: "5vw", marginTop: "10vh", border: "none"}}>
+                <div className="card-transparent" style={{width: "18rem", marginRight: "5vw", marginTop: "10vh", border: "none"}}>
                   <img src={shortstory} className="card-img-top m-auto" alt="..." style={{width: "100px"}} />
                     <div className="card-body">
                     <h5 className="card-title"  style={cardTitle}>Short Story</h5>
@@ -55,7 +55,7 @@ function Features() {
                 </div>
           </div>
           <div className="col">
-                <div className="card" style={{width: "18rem", marginRight: "5vw", marginTop: "10vh", border: "none"}}>
+                <div className="card-transparent" style={{width: "18rem", marginRight: "5vw", marginTop: "10vh", border: "none"}}>
                   <img src={more} className="card-img-top m-auto" alt="..." style={{width: "100px"}} />
                     <div className="card-body">
                     <h5 className="card-title"  style={cardTitle}>.</h5>
@@ -64,7 +64,7 @@ function Features() {
                 </div>
           </div>
           <div className="col">
-                <div className="card" style={{width: "18rem", marginTop: "10vh", border: "none"}}>
+                <div className="card-transparent" style={{width: "18rem", marginTop: "10vh", border: "none"}}>
                   <img src={more} className="card-img-top m-auto" alt="..." style={{width: "100px"}} />
                     <div className="card-body">
                     <h5 className="card-title"  style={cardTitle}>Others</h5>
