@@ -56,7 +56,46 @@ h1{
 .explore{
     margin-left: 200px;
     background: rgb(255,110,73);
+    /* background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%); */
+}
+
+.explore:hover{
+    transition-delay: 5s;
+    background: rgb(255,110,73);
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
+    transition:  all ease;
+}
+
+.popup-content{
+    width: 40vw;
+    height: 50vh;
+    border-radius: 25px;
+    display: "flex";
+    justify-content: "center";
+    align-items: "center";
+}
+.popu-overlay{
+    background: rgb(19, 24, 62);
+}  
+.popup-content h2{
+    margin-left: 30px;
+    font-size: 40px;
+    font-family: 'Shantell Sans', cursive;
+    background: -webkit-linear-gradient(90deg, #cd34b9 0%, #ff6e49 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+.loginbtn{
+    width: 100px;
+    height: 50px;
+    border-radius: 25px;
+    font-size : 25px;
+    background: rgb(108,73,237);
+    background: linear-gradient(90deg, rgba(108,73,237,1) 0%, rgba(255,110,73,1) 100%);
+}
+.loginbtn:hover{
+    background: rgb(108,73,237);
 }
 
 .toolsheading {
@@ -93,6 +132,8 @@ h1{
     top: 25vh;
     left: 15vw;
 }
+
+
 
 .footer{
     color: #ffff;
