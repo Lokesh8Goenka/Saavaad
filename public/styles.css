@@ -11,7 +11,7 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #25CCF7;
+    background-color: rgb(38, 206, 247);
     /* overflow: hidden; */
 }
 
@@ -36,13 +36,22 @@ h1{
     font-family: 'Pacifico', cursive;
 }
 
+textarea:hover{
+    box-shadow: 0 4px 15px 0 rgba(205,52,185, 0.75);
+}
+
+textarea:focus{
+    box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
+}
+
 
 /****************************************** Class *******************************************/
 
 
 .navbar{
-    background-color: #ffff;
+    background-color: #fff;
 }
+
 .image{
     position: absolute;
     top: 20px;
@@ -60,42 +69,47 @@ h1{
 }
 
 .explore:hover{
-    transition-delay: 5s;
-    background: rgb(255,110,73);
-    background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
-    transition:  all ease;
+    transition: 0.1s  ease-in;
+    box-shadow: 0 4px 15px 0 rgba(19, 24, 62, 1);
+}
+
+#popup-1.popup-content{
+    background-color: #13183e;
+    border: none;
 }
 
 .popup-content{
-    width: 40vw;
-    height: 50vh;
+    margin: 0;
+    padding: 0;
+    width: 30vw;
+    height: 30vh;
     border-radius: 25px;
     display: "flex";
     justify-content: "center";
     align-items: "center";
 }
-.popu-overlay{
-    background: rgb(19, 24, 62);
-}  
+
 .popup-content h2{
-    margin-left: 30px;
+    margin: 10px;
     font-size: 40px;
+    border-radius: 15px;
     font-family: 'Shantell Sans', cursive;
-    background: -webkit-linear-gradient(90deg, #cd34b9 0%, #ff6e49 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: #13183e ;
+    color: #fff;
 
 }
-.loginbtn{
-    width: 100px;
-    height: 50px;
-    border-radius: 25px;
-    font-size : 25px;
-    background: rgb(108,73,237);
-    background: linear-gradient(90deg, rgba(108,73,237,1) 0%, rgba(255,110,73,1) 100%);
+.popup-content button{
+    font-size : 35px;
+    color: #fff;
 }
-.loginbtn:hover{
-    background: rgb(108,73,237);
+/* .popup-content button:hover{
+    transition: 1s  ease-in;
+    font-size: 40px;
+    text-shadow:  1px 1px  rgb(255, 0, 221);
+} */
+.features{
+    background-color: rgba(38, 206, 247,0.2);
+    height: 100vh;
 }
 
 .toolsheading {
@@ -112,7 +126,7 @@ h1{
 
 .login{
     height: 100vh;
-    background-color: #13183e;
+    background-color: #fff;
 }
 
 .summary{
@@ -120,9 +134,11 @@ h1{
     background-color: #13183e;
 }
 
+
 .submitBtn{
     color: #fff;
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
+    /* box-shadow: 0 4px 15px 0 rgba(205,52,185, 0.75); */
     border-radius: 25px;
     height: 20vh;
     width: 20vw;
@@ -132,8 +148,14 @@ h1{
     top: 25vh;
     left: 15vw;
 }
-
-
+.submitBtn:hover{
+    transition: 0.5s ease;
+    /* box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1); */
+    box-shadow: 0 4px 15px 0 rgba(205,52,185, 0.75);
+}
+.submitBtn:focus{
+    box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
+}
 
 .footer{
     color: #ffff;
@@ -142,30 +164,4 @@ h1{
     text-align: center;
 }
 
-
-
-/* #header {
-    background-color: grey;
-    padding: 50px 10px;
-    color: black;
-    height: 100vh; 
-    position: fixed;
-    top: 0;
-    height: 100%;
-    transition: 2s;
-  }
-  .progress-bar {
-    height: 10px;
-    background: #005357;
-    width: 100%;
-  }
-
-  .cont {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 10px;
-    background: #ccc;
-  } */
 /****************************************** ID *******************************************/
