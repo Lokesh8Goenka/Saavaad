@@ -1,5 +1,6 @@
 import React from 'react';
 // import React, { useState, useEffect } from 'react';
+
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Features from "./Features";
@@ -10,14 +11,16 @@ import Summary from "./Summary";
 
 
 
+
 function App(){
     return (
         <div>
+           
             <Navbar />
             <Home />
             <Features />
             <Summary />
-            <Login />
+            {/* <Login /> */}
             <Footer />
         </div>
     );

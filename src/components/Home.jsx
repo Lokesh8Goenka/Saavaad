@@ -1,7 +1,7 @@
 import React from "react";
 import ebook from "../images/ebook.gif";
 import Popup from 'reactjs-popup';
-// import Safe from "../images/safe-box.gif";
+import Save from "../images/save.png";
 import 'reactjs-popup/dist/index.css';
 
 const btnStyle = {
@@ -42,9 +42,9 @@ function Home(){
                 modal nested>
                 {
                             <div className=".popup-content" >
-                                <h2>Want To save your Cl!cks?</h2>
-                                {/* <img style={{height: "30vh", float: "right", marginRight: "10vw"}} src={Safe} alt="save doc" /> */}
+                                <img style={{height: "30vh", float: "right", marginRight: "10vw"}} src={Save} alt="save doc" />
                                 <br /><br />
+                                <h2>Want To save your Cl!cks?</h2>
                                 <h5><button>Login</button></h5>
                             </div>
                 }

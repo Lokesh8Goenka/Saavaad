@@ -74,15 +74,16 @@ textarea:focus{
 }
 
 #popup-1.popup-content{
-    background-color: #13183e;
+    background-color: #ffffff;
     border: none;
+    height:auto;
 }
 
 .popup-content{
     margin: 0;
     padding: 0;
     width: 30vw;
-    height: 30vh;
+    height:auto;
     border-radius: 25px;
     display: "flex";
     justify-content: "center";
@@ -94,19 +95,26 @@ textarea:focus{
     font-size: 40px;
     border-radius: 15px;
     font-family: 'Shantell Sans', cursive;
-    background: #13183e ;
-    color: #fff;
+    background: #ffffff ;
+    color: black;
 
 }
 .popup-content button{
     font-size : 35px;
     color: #fff;
 }
-/* .popup-content button:hover{
-    transition: 1s  ease-in;
-    font-size: 40px;
-    text-shadow:  1px 1px  rgb(255, 0, 221);
-} */
+
+.popup-content button{
+    background-color: #fff;
+    font-size: 34px;
+    color: #cd34b9 ;
+}
+
+.popup-content button:hover{
+    transition: 0.1s ease-in;
+    font-size: 38px;
+}
+
 .features{
     background-color: rgba(38, 206, 247,0.2);
     height: 100vh;
@@ -122,6 +130,7 @@ textarea:focus{
     color: #fff;
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
 }
+
 
 
 .login{
