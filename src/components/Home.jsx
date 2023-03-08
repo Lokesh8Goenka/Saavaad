@@ -26,7 +26,7 @@ function Home(){
 //       };
 
     return(
-        <div className="main">
+        <div className="main container-fluid">
             {/* <div class="cont">
                 <div class="progress-bar" id="mybar"></div>
             </div> */}

@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Features from "./Features";
 import Home from "./Home";
-import Login from "./Login";
+// import Login from "./Login";
 import Summary from "./Summary";
 // inside component:
 

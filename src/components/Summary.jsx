@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState} from 'react';
 
 const sumStyle = {
     fontFamily: "'Shantell Sans', cursive",
@@ -8,42 +8,66 @@ const sumStyle = {
     fontSize: "6vw"
 }
 
-function handleSubmit(e) {
-    // Prevent the browser from reloading the page
-    e.preventDefault();
+function MLModelInput() {
+const [inputText, setInputText] = useState('');
+const [resultText, setResultText] = useState('');
 
-    // Read the form data
-    const form = e.target;
-    const formData = new FormData(form);
+const handleSubmit = async (event) => {
+  event.preventDefault();
 
-    // You can pass formData as a fetch body directly:
-    // fetch('/some-api', { method: form.method, body: formData });
+  if (inputText) {
+  const response = await fetch('http://192.168.34.133:12345/summarize', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      text: inputText
+  })
+});
 
-    // Or you can work with it as a plain object: 
-    const formJson = Object.fromEntries(formData.entries());
-    console.log(formJson);
+  const resultText = await response.json();
+
+  setResultText(JSON.stringify(resultText));
 }
+};
 
-function Summary() {
-    return(
-        <div className="summary">
-                <h1 style={sumStyle}>Summary...</h1>
+const handleChange = event => {
+  setInputText(event.target.value);
+};
 
-                <form method="post" onSubmit={handleSubmit}>
-                <button className="submitBtn" type="submit">Summarize</button>
-                <label style={{color: "#fff", float: "right", marginRight: "10vw"}}>
-                    <textarea style={{backgroundColor: "transparent"}}
-                    name="postContent"
-                    defaultValue="Your Text Here"
-                    rows={18}
-                    cols={70}
-                    />
-                </label>
-                <hr />
-                
+
+
+return (
+  <div className="summary">
+    <div className="container">
+        <div className="row">
+            <div className="col">
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="text-input"></label>
+                    <textarea style={{marginTop: "50px"}}
+                        type="text"
+                        cols="100" 
+                        rows="10"
+                        id="text-input"
+                        value={inputText}
+                        onChange={handleChange}
+                    /> <br />
+                    <button className="submitBtn" type="submit">Summarize</button> <br />
                 </form>
+            </div>
         </div>
-    );
+        <div className="row">
+            <div className="col">
+                <output style={{color: "Black", backgroundColor: "white"}}>
+                    {resultText}
+                </output>
+            </div>
+        </div>
+    </div>
+</div>
+  
+);
 }
 
-export default Summary;
+export default MLModelInput;

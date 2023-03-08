@@ -18,7 +18,7 @@ const btnStyle = {
 function Navbar() {
 
     return (
-      <div className="navbar">
+      <div className="navbar container-fluid">
         <h1 style={h1Style}>Cl!ckl</h1>
         <button style={btnStyle}>Login</button>
       </div>

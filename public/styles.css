@@ -22,6 +22,10 @@ button{
     color: #ffff;
     text-align: center;
 }
+button:hover{
+    transition: 0.5s ease ;
+    box-shadow: 0 4px 15px 0 rgba(74, 90, 214, 1);
+}
 
 td{
     padding-left: 20px;
@@ -34,6 +38,21 @@ p{
 h1{
     color: #383b4e;
     font-family: 'Pacifico', cursive;
+}
+
+textarea{
+    overflow: hidden;
+    vertical-align: center;
+}
+input{
+    border: none;
+}
+
+input:hover{
+    box-shadow: 0 4px 15px 0 rgba(74, 90, 214, 0.75);
+}
+input:focus{
+    box-shadow: 0 4px 15px 0 rgba(255, 110, 73, 1);
 }
 
 textarea:hover{
@@ -68,10 +87,10 @@ textarea:focus{
     /* background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%); */
 }
 
-.explore:hover{
+/* .explore:hover{
     transition: 0.1s  ease-in;
     box-shadow: 0 4px 15px 0 rgba(19, 24, 62, 1);
-}
+} */
 
 #popup-1.popup-content{
     background-color: #ffffff;
@@ -117,7 +136,7 @@ textarea:focus{
 
 .features{
     background-color: rgba(38, 206, 247,0.2);
-    height: 100vh;
+    height: auto;
 }
 
 .toolsheading {
@@ -135,12 +154,14 @@ textarea:focus{
 
 .login{
     height: 100vh;
-    background-color: #fff;
+    background-color: rgba(38, 206, 247,0.2);
+    text-align: center;
 }
 
 .summary{
     height: 100vh;
     background-color: #13183e;
+    text-align: center;
 }
 
 
@@ -153,9 +174,7 @@ textarea:focus{
     width: 20vw;
     font-size: 50px;
     font-family: 'Shantell Sans', cursive;
-    position: relative;
-    top: 25vh;
-    left: 15vw;
+    margin-top: 15px;
 }
 .submitBtn:hover{
     transition: 0.5s ease;
@@ -166,11 +185,22 @@ textarea:focus{
     box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
 }
 
+.loginInput{
+    border-radius: 25px;
+    padding: 100px;
+    background-color: rgba(255, 255, 255,0.75);
+}
+
 .footer{
     color: #ffff;
     background-color: #13183e;
     height: 30px;   
     text-align: center;
+}
+
+
+.col{
+    margin-bottom: 50px;
 }
 
 /****************************************** ID *******************************************/
