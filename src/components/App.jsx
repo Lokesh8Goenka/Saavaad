@@ -9,9 +9,6 @@ import Home from "./Home";
 import Summary from "./Summary";
 // inside component:
 
-
-
-
 function App(){
     return (
         <div>

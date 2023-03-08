@@ -126,6 +126,8 @@ textarea:focus{
 .popup-content button{
     background-color: #fff;
     font-size: 34px;
+    padding-bottom: 10px;
+    border-radius: 15px;
     color: #cd34b9 ;
 }
 
@@ -159,8 +161,7 @@ textarea:focus{
 }
 
 .summary{
-    height: 100vh;
-    background-color: #13183e;
+    background-color: #ffffff;
     text-align: center;
 }
 

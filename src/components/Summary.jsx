@@ -1,14 +1,7 @@
 import React, { useState} from 'react';
+import UploadImg from "./UploadImg";
 
-const sumStyle = {
-    fontFamily: "'Shantell Sans', cursive",
-    color: "#fff",
-    marginLeft: "10vw",
-    paddingTop: "10vh",
-    fontSize: "6vw"
-}
-
-function MLModelInput() {
+function MLModelInput(props) {
 const [inputText, setInputText] = useState('');
 const [resultText, setResultText] = useState('');
 
@@ -29,6 +22,7 @@ const handleSubmit = async (event) => {
   const resultText = await response.json();
 
   setResultText(JSON.stringify(resultText));
+
 }
 };
 
@@ -36,10 +30,11 @@ const handleChange = event => {
   setInputText(event.target.value);
 };
 
-
-
 return (
   <div className="summary">
+    <h1>Summary</h1>
+    <UploadImg />
+
     <div className="container">
         <div className="row">
             <div className="col">
@@ -52,7 +47,7 @@ return (
                         id="text-input"
                         value={inputText}
                         onChange={handleChange}
-                    /> <br />
+                    /> <br /><br />
                     <button className="submitBtn" type="submit">Summarize</button> <br />
                 </form>
             </div>
@@ -64,6 +59,7 @@ return (
                 </output>
             </div>
         </div>
+        
     </div>
 </div>
   
