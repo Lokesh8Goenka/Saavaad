@@ -38,7 +38,7 @@ function Home(){
             <div className="row">
                 <div className="col">
                 <Popup trigger=
-                        {<button className="explore" style={btnStyle}> Explore </button>}
+                        {<button className="explore" style={btnStyle}> Explore </button>} 
                         modal nested>
                         {
                                     <div className=".popup-content" >
@@ -48,7 +48,7 @@ function Home(){
                                         <h5><button>Login</button></h5>
                                     </div>
                         }
-                    </Popup>
+                    </Popup> <br /><br /><br />
                 </div>
             </div>
 
