@@ -11,10 +11,10 @@ import cards from "../cards";
 function Features(props) {
 
   return(
-    <div className="features container-fluid">
-      <div className="toolsheading">
-          <h2 style={{fontSize: "50px"}}> Tools </h2>
-      </div>
+    <div className="features "><br /><br />
+      {/* <div className="toolsheading"> */}
+          <h2 style={{fontSize: "50px"}}> Tools </h2><br /><br />
+      {/* </div> */}
 
       <div className="container text-center">
         <div className="row">

@@ -5,6 +5,8 @@ import contract from "./images/contract.png";
 import shortstory from "./images/fantasy.png";
 import Translate from "./images/languages.png";
 
+
+
 const Cards = [
     {
         title: "Summary",
