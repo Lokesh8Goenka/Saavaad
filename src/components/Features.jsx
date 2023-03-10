@@ -1,6 +1,7 @@
-import React from "react";
+import React  from "react";
 import Feature from "./Feature";
 import cards from "../cards";
+import Summary from "./Summary.jsx";
 
 
 
@@ -17,8 +18,10 @@ function Features(props) {
       {/* </div> */}
 
       <div className="container text-center">
+         {/* console.log({cards[0].title}); */}
         <div className="row">
               <Feature
+              
                  title={cards[0].title}
                  text={cards[0].text}
                  img={cards[0].imgURL}
@@ -57,6 +60,7 @@ function Features(props) {
               
               
       </div>
+      <Summary />
     </div>
     
   );

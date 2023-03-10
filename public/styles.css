@@ -77,18 +77,18 @@ textarea:focus{         /*For the text area ON FOCUS*/
 /****************************************** Class *******************************************/
 
 
-.navbar{             /*For the navbar class*/
+.navbar{             /*For the navbar class at the top*/
     background-color: #fff;
 }
 
-.image{
+.image{     /*For the image class in the home (the gif)*/
     position: absolute;
     top: 20px;
     right: 5vw;
     height: 400px;
 }
 
-.explore{
+.explore{           /*For the buton in the home component*/
     margin-left: 200px;
     background: rgb(255,110,73);
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
@@ -99,13 +99,8 @@ textarea:focus{         /*For the text area ON FOCUS*/
     box-shadow: 0 4px 15px 0 rgba(19, 24, 62, 1);
 } */
 
-#popup-1.popup-content{
-    background-color: #ffffff;
-    border: none;
-    height:auto;
-}
 
-.popup-content{
+.popup-content{     /*For the login popup in the home component*/
     margin: 0;
     padding: 0;
     width: 30vw;
@@ -116,7 +111,7 @@ textarea:focus{         /*For the text area ON FOCUS*/
     align-items: "center";
 }
 
-.popup-content h2{
+.popup-content h2{      /*For the heading in the login popup in the home component*/
     margin: 10px;
     font-size: 40px;
     border-radius: 15px;
@@ -125,12 +120,12 @@ textarea:focus{         /*For the text area ON FOCUS*/
     color: black;
 
 }
-.popup-content button{
+.popup-content button{      /*For the button in the login popup in the home component*/
     font-size : 35px;
     color: #fff;
 }
 
-.popup-content button{
+.popup-content button{      /*For the button in the login popup in the home component*/
     background-color: #fff;
     font-size: 34px;
     padding-bottom: 10px;
@@ -138,42 +133,30 @@ textarea:focus{         /*For the text area ON FOCUS*/
     color: #cd34b9 ;
 }
 
-.popup-content button:hover{
+.popup-content button:hover{    /*For the button ON HOVER in the login popup in the home component*/
     transition: 0.1s ease-in;
     font-size: 38px;
 }
 
-.features{
+.features{              /*For the Features component*/
     background-color: rgba(38, 206, 247,0.2);
     height: auto;
 }
 
-/* .toolsheading {
-    border-radius: 15px;
-    width: 10vw;
-    height: 10vh;
-    margin: 15vh auto;
-    text-align: center;
-    font-family: 'Shantell Sans', cursive;
-    color: #fff;
-    background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
-} */
 
-
-
-.login{
+.login{                 /*For the Login component*/
     height: 100vh;
     background-color: rgba(38, 206, 247,0.2);
     text-align: center;
 }
 
-.summary{
+.summary{       /*For the Summary component*/
     background-color: #ffffff;
     text-align: center;
 }
 
 
-.submitBtn{
+.submitBtn{          /*For the submit button in Summary component*/
     color: #fff;
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
     /* box-shadow: 0 4px 15px 0 rgba(205,52,185, 0.75); */
@@ -184,22 +167,22 @@ textarea:focus{         /*For the text area ON FOCUS*/
     font-family: 'Shantell Sans', cursive;
     margin-top: 15px;
 }
-.submitBtn:hover{
+.submitBtn:hover{           /*For the submit button ON HOVER in Summary component*/
     transition: 0.5s ease;
     /* box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1); */
     box-shadow: 0 4px 15px 0 rgba(205,52,185, 0.75);
 }
-.submitBtn:focus{
+.submitBtn:focus{           /*For the submit button ON FOCUS in Summary component*/
     box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
 }
 
-.loginInput{
+.loginInput{                   /*For the login input in login component*/
     border-radius: 25px;
     padding: 100px;
     background-color: rgba(255, 255, 255,0.75);
 }
 
-.footer{
+.footer{            /*For the Footer component*/
     color: #ffff;
     background-color: #13183e;
     height: 30px;   
@@ -209,3 +192,10 @@ textarea:focus{         /*For the text area ON FOCUS*/
 
 
 /****************************************** ID *******************************************/
+
+
+#popup-1.popup-content{  /*For the login popup in the home component*/
+    background-color: #ffffff;
+    border: none;
+    height:auto;
+}

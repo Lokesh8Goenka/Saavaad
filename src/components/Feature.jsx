@@ -1,13 +1,14 @@
-import React from "react";
+import React  from "react";
 
 
 function Card(props) {
+
   return (
         <div className="col"> 
-                <div className="card mb-3" style={{maxWidth: "540px", minWidth: "500px", padding: "20px"}}>
+                <div className="card-transparent mb-3" style={{maxWidth: "540px", minWidth: "500px", padding: "20px"}}>
                     <div className="row g-0">
                     <div className="col-md-4">
-                        <img  src={props.img} className="img-fluid rounded-start" alt="Respective img" />
+                        <img src={props.img} className="img-fluid rounded-start" alt="Respective img" />
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">
