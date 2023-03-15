@@ -12,7 +12,7 @@ function App() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('.jpg', file);
+    formData.append('file', file);
 
     fetch('http://192.168.34.133:12345/image_text_summarize', {
       method: 'POST',
