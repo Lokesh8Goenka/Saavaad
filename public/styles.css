@@ -24,7 +24,7 @@ button{   /*All The Buttons in website*/
 }
 button:hover{  /*For all buttons ON HOVER*/
     transition: 0.5s ease ;
-    box-shadow: 0 4px 15px 0 rgba(74, 90, 214, 1);
+    box-shadow: 0 4px 15px 0 rgb(255, 255, 255);
 }
 
 td{   /*For all the table data*/
@@ -36,7 +36,7 @@ p{    /*For all the p tags*/
 }
 
 h1{         /*For all the h1 tags*/
-    color: #383b4e;
+    color: #ffffff;
     font-family: 'Pacifico', cursive;
 }
 
@@ -49,6 +49,13 @@ h2{         /*For all the h2 tags*/
     color: #fff;
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
 }
+h3{         /*for the heading of how to use*/
+    margin:  auto;
+    text-align: center;
+    border-radius: 15px;
+    width: 500px;
+}
+
 
 textarea{       /*For the text area in the summary section*/
     overflow: hidden;
@@ -78,7 +85,19 @@ textarea:focus{         /*For the text area ON FOCUS*/
 
 
 .navbar{             /*For the navbar class at the top*/
-    background-color: #fff;
+    background-color: #13183e;
+}
+.navbar h1{
+    color: white
+}
+
+.main{
+    background-color: #13183e;
+}
+.main h1{
+    background: -webkit-linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .image{     /*For the image class in the home (the gif)*/
@@ -136,6 +155,28 @@ textarea:focus{         /*For the text area ON FOCUS*/
 .popup-content button:hover{    /*For the button ON HOVER in the login popup in the home component*/
     transition: 0.1s ease-in;
     font-size: 38px;
+}
+
+.about{
+    color: white;
+}
+
+.about h3{
+    font-size: 60px;
+    color: #ff6e49;
+}
+
+.card:hover{
+    transition: 0.5s ease-in;
+    box-shadow: 0 4px 15px 0 rgba(255, 110, 73, 1);
+}
+
+.card img{
+    height: 200px;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
 }
 
 .features{              /*For the Features component*/
@@ -199,3 +240,5 @@ textarea:focus{         /*For the text area ON FOCUS*/
     border: none;
     height:auto;
 }
+
+
