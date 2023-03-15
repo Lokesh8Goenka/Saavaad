@@ -25,10 +25,10 @@ function App() {
 
   return (
     <div>
-      <h1>Image Upload</h1>
+      <h1 style={{color: "white"}}>Image Upload</h1>
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleFileChange} />
-        <button type="submit">Upload</button>
+        <input type="file" style={{borderRadius: "20px",color: "white", marginRight: "40px"}} onChange={handleFileChange} /> 
+        <button style={{borderRadius: "20px"}} type="submit">Upload</button>
       </form>
       <output>{output}</output>
     </div>

@@ -32,7 +32,7 @@ const handleChange = event => {
 
 return (
   <div className="summary">
-    <h1>Summary</h1>
+    <h1 style={{color: "white"}}>Summary</h1>
     <UploadImg />
 
     <div className="container">

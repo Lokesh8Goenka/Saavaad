@@ -93,7 +93,7 @@ function hoverON(e) {
                             <Card.Body>
                             <Card.Title>Step 2</Card.Title>
                             <Card.Text>
-                                Choose from the options what you want?
+                                Uplaod the contents!
                             </Card.Text>
                             </Card.Body>
                         </Card>

@@ -107,7 +107,7 @@ textarea:focus{         /*For the text area ON FOCUS*/
     height: 400px;
 }
 
-.explore{           /*For the buton in the home component*/
+.explore{           /*For the button in the home component*/
     margin-left: 200px;
     background: rgb(255,110,73);
     background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
@@ -180,6 +180,7 @@ textarea:focus{         /*For the text area ON FOCUS*/
 }
 
 .features{              /*For the Features component*/
+    /* background-color: #2B368A; */
     background-color: rgba(38, 206, 247,0.2);
     height: auto;
 }
@@ -192,10 +193,9 @@ textarea:focus{         /*For the text area ON FOCUS*/
 }
 
 .summary{       /*For the Summary component*/
-    background-color: #ffffff;
+    background-color: #13183e;
     text-align: center;
 }
-
 
 .submitBtn{          /*For the submit button in Summary component*/
     color: #fff;
