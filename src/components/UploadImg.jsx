@@ -12,7 +12,7 @@ function App() {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('.jpg', file);
+    formData.append('file', file);
 
     fetch('http://192.168.34.133:12345/image_text_summarize', {
       method: 'POST',
@@ -21,7 +21,8 @@ function App() {
       .then(response => response.text())
       .then(data => setOutput(data))
       .catch(error => console.log(error));
-  };
+  };  
+  
 
   return (
     <div>
@@ -30,7 +31,7 @@ function App() {
         <input type="file" style={{borderRadius: "20px",color: "white", marginRight: "40px"}} onChange={handleFileChange} /> 
         <button style={{borderRadius: "20px"}} type="submit">Upload</button>
       </form>
-      <output>{output}</output>
+      <output style={{color: "Black", backgroundColor: "white"}}>{output}</output>
     </div>
   );
 }

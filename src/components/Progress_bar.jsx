@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const Progress_bar = ({bgcolor,progress,height}) => {
 	
