@@ -13,6 +13,7 @@ function App() {
 
     const formData = new FormData();
     formData.append('file', file);
+    formData.append('file', file);
 
     fetch('http://192.168.34.133:12345/image_text_summarize', {
       method: 'POST',
@@ -21,6 +22,9 @@ function App() {
       .then(response => response.text())
       .then(data => setOutput(data))
       .catch(error => console.log(error));
+  };  
+  //new codes
+
   };  
   
 
