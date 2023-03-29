@@ -24,8 +24,7 @@ function App() {
       .catch(error => console.log(error));
   };  
   //new codes
-
-  };  
+  
   
 
   return (

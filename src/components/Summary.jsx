@@ -2,18 +2,25 @@ import React, { useState} from 'react';
 import UploadImg from "./UploadImg";
 import Progressbar from './Progress_bar';
 
-function MLModelInput(props) {
+function Summary(props) {
 const [inputText, setInputText] = useState('');
 const [resultText, setResultText] = useState('');
-
-const [loading, setLoading] = useState(false);
+const [disable, setDisable] = useState(false);
+const [isActive, setIsActive] = useState('true');
+const [btntext, setBtntext] = useState('Summarize');
+const [loading, setLoading] = useState('0');
 
 const handleSubmit = async (event) => {
+  setDisable(true);
+  setIsActive(false);
+  setBtntext('Processing');
+
   event.preventDefault();
 
   if (inputText) {
-    setLoading(true);
-  const response = await fetch('http://192.168.34.133:12345/summarize', {
+    // setLoading(true);
+    setLoading('20');
+  const response = await fetch('http://192.168.34.133:12345/text_summarize', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -22,11 +29,14 @@ const handleSubmit = async (event) => {
       text: inputText
   })
 });
-  setLoading(false);
+  // setLoading(false);
   const resultText = await response.json();
 
   setResultText(JSON.stringify(resultText));
-
+  setDisable(false);
+  setIsActive(true);
+  setBtntext('Sumarize');
+  setLoading('100');
 }
 };
 
@@ -34,11 +44,11 @@ const handleChange = event => {
   setInputText(event.target.value);
 };
 
-const [progress, setProgress] = useState("0")
+// const [progress, setProgress] = useState("0")
 
-function handelProgress() {
-  setProgress('90')
-}
+// function handelProgress() {
+//   setProgress('90')
+// }
 
 return (
   <div className="summary">
@@ -55,7 +65,7 @@ return (
             <div className="col">
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="text-input"></label>
-                    <textarea style={{marginTop: "50px"}}
+                    <textarea style={{marginTop: "50px", overflow: "scroll" }}
                         type="text"
                         cols="100" 
                         rows="10"
@@ -63,11 +73,13 @@ return (
                         value={inputText}
                         onChange={handleChange}
                     /> <br /><br />
-                    <button className="submitBtn" type="submit">Summarize</button> <br />
+                    <button  className={isActive ? 'submitBtn' : 'submitBtnDisable'} disabled={disable} type="submit">
+                      {btntext}
+                    </button> <br />
                 </form>
             </div>
         </div>
-        <Progressbar bgcolor="#ff00ff" progress={progress}  height={30} />
+        <Progressbar className="progress" bgcolor="#ff00ff" progress={loading}  height={30} />
         <div className="row">
             <div className="col">
                 <output style={{color: "Black", backgroundColor: "white"}}>
@@ -75,7 +87,6 @@ return (
                 </output>
             </div>
         </div>
-        // )}
     </div>
       
 </div>

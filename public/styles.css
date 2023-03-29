@@ -53,7 +53,6 @@ h3{         /*for the heading of how to use*/
     margin:  auto;
     text-align: center;
     border-radius: 15px;
-    width: 500px;
 }
 
 
@@ -79,6 +78,7 @@ textarea:hover{     /*For the text area ON HOVER*/
 textarea:focus{         /*For the text area ON FOCUS*/
     box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
 }
+
 
 
 /****************************************** Class *******************************************/
@@ -110,13 +110,13 @@ textarea:focus{         /*For the text area ON FOCUS*/
 .explore{           /*For the button in the home component*/
     margin-left: 200px;
     background: rgb(255,110,73);
-    /* background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%); */
+    background: linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%);
 }
 
-.explore:hover{
+/* .explore:hover{
     transition: 0.1s  ease-in;
     box-shadow: 0 4px 15px 0 rgba(19, 24, 62, 1);
-}
+} */
 
 #popup-1.popup-content{
     background-color: #ffffff;
@@ -237,6 +237,10 @@ textarea:focus{         /*For the text area ON FOCUS*/
     height: auto;
 }
 
+.img-fluid{
+    height: 100%;
+    width: 100%;
+}
 
 .login{                 /*For the Login component*/
     height: 100vh;
@@ -267,6 +271,22 @@ textarea:focus{         /*For the text area ON FOCUS*/
 }
 .submitBtn:focus{           /*For the submit button ON FOCUS in Summary component*/
     box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
+}
+
+.submitBtnDisable{
+    color: #fff;
+    background: linear-gradient(90deg, rgba(255,110,73,1) 100%, rgba(205,52,185,1) 0%);
+    border-radius: 25px;
+    height: 20vh;
+    width: 20vw;
+    font-size: 50px;
+    font-family: 'Shantell Sans', cursive;
+    margin-top: 15px;
+    content: "Processing";
+}
+.progress{
+    transition: 1s ease;
+    transition-delay: 0.5s;
 }
 
 .loginInput{                   /*For the login input in login component*/
@@ -324,4 +344,73 @@ textarea:focus{         /*For the text area ON FOCUS*/
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+
+
+.feature .container {
+  position : relative;
+  width : 1100px;
+  display : flex;
+  align-items : center;
+  justify-content : center;
+  flex-warp : warp;
+  padding : 30px;  
+}
+
+.feature .container .cards {
+  position: relative;
+  max-width : 300px;
+  height : 215px;  
+  background-color : #fff;
+  margin : 30px 10px;
+  padding : 20px 15px;
+  
+  display : flex;
+  flex-direction : column;
+  box-shadow : 0 5px 20px rgba(0,0,0,0.5);
+  transition : 0.3s ease-in-out;
+  border-radius : 15px;
+}
+.feature .container .cards:hover {
+  height : 320px;    
+}
+
+
+.feature .container .cards .image {
+  position : relative;
+  width : 260px;
+  height : 260px;
+  
+  top : -40%;
+  left: 8px;
+  box-shadow : 0 5px 20px rgba(0,0,0,0.2);
+  z-index : 1;
+}
+
+.feature .container .cards .image img {
+  max-width : 100%;
+  border-radius : 15px;
+}
+
+.feature .container .cards .content {
+  position : relative;
+  top : -140px;
+  padding : 10px 15px;
+  color : #111;
+  text-align : center;
+  
+  visibility : hidden;
+  opacity : 0;
+  transition : 0.3s ease-in-out;
+    
+}
+
+.feature .container .cards:hover .content {
+   margin-top : 30px;
+   visibility : visible;
+   opacity : 1;
+   transition-delay: 0.2s;
+  
 }
