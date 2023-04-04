@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 function Card(props) {
   return (
     <div className="feature">
-      <Link to="summary" spy={true} smooth={true} offset={50} duration={500}>
+      <Link to="process" spy={true} smooth={true} offset={50} duration={500}>
         <div
           onClick={() => {
             props.handleClick(props.title);
@@ -13,7 +13,7 @@ function Card(props) {
         >
           <div className="cards">
             <div className="image">
-              <img src={props.img} alt={props.title} />
+              <img src={props.img} alt={props.title} style={{width: "80%"}} />
             </div>
             <div className="content">
               <h3>{props.title}</h3>

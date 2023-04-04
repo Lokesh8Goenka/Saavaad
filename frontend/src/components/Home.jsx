@@ -1,5 +1,6 @@
 import React from "react";
-import Scanner from "../images/scanner.png";
+// import Scanner from "../images/scanner.png";
+import Clickl from "../images/clickl3.png";
 import Card from 'react-bootstrap/Card';
 import Upload from "../images/upload.png";
 import Download from "../images/download.png";
@@ -50,7 +51,7 @@ const [modalShow, setModalShow] = React.useState(false);
                     
                 </div>
                 <div className="col">
-                    <img style={{height: "50vh",margin: "30px 100px"  }} src={Scanner} alt="EBook gif" />
+                    <img style={{marginTop: "10px"}}  src={Clickl} alt="Clickl3" />
                 </div> 
                 
             </div><br />
@@ -59,7 +60,6 @@ const [modalShow, setModalShow] = React.useState(false);
                 <Link to="features" spy={true} smooth={true} offset={50} duration={500}>
                     <button className="explore"  onClick={() => setModalShow(true)} style={btnStyle}> Explore </button>     
                 </Link>
-                
                     <WantLogin  
                     show={modalShow}
                     onHide={() => setModalShow(false)} 
@@ -119,7 +119,7 @@ const [modalShow, setModalShow] = React.useState(false);
                                 Download the result!
                             </Card.Text>
                             </Card.Body>
-                        </Card>
+                    </Card>
                     </div>
 
                 </div>

@@ -11,13 +11,6 @@ const h1Style = {
   // color: "#13183e",
 }
 
-const btnStyle = {
-  borderRadius: "25px",
-  height: "45px",
-  width: "100px",
-  fontSize: "25px",
-}
-
 function Navbar() {
   const [loginShow, setloginShow] = React.useState(false);
 
@@ -32,8 +25,7 @@ function Navbar() {
           <h1 style={h1Style}>Cl!ckl</h1>
         </div>
         <div className="col-lg-2">
-
-            <button style={btnStyle} onClick={handelVisible}>
+            <button className="loginNavbar" onClick={handelVisible}>
               Login
             </button>  
             <Login  

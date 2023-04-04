@@ -1,7 +1,7 @@
-import React, {useState, Component }  from "react";
+import React, {useState}  from "react";
 import Feature from "./Feature";
 import cards from "../cards";
-import Summary from "./Summary.jsx";
+import Process from "./Process.jsx";
 import writing from "../images/creative-writing.png";
 import agreement from "../images/agreement.png";
 import writer from "../images/copywriter.png";
@@ -18,12 +18,17 @@ function Features(props) {
 
    const [title, setTitle] = useState("");
    const [heading, setHeading] = useState("");
-
+   const [contact, setContact] = useState(false);
+   const [summary, setSummary] = useState(false);
    
   return(
     <div className="features"  id='features'><br /><br />
         {/* <div className="toolsheading"> */}
         <h2 style={h2Style}> Tools </h2><br /><br />
+        
+         <p>*Double Click the Tool you want to use*</p>
+        
+        
       {/* </div> */}
 
       <div className="container text-center">
@@ -37,6 +42,7 @@ function Features(props) {
                   img={cards[0].imgURL}
                   handleClick={(title) => {
                      setTitle(title)
+                     setSummary(true)
                   }}
                   />
             </div>
@@ -48,6 +54,7 @@ function Features(props) {
                      img={cards[1].imgURL}
                      handleClick={(title) => {
                         setTitle(title)
+                        setSummary(true)
                      }}
                   />
             </div>
@@ -64,6 +71,7 @@ function Features(props) {
                img={cards[2].imgURL}
                handleClick={(title) => {
                   setTitle(title)
+                  setSummary(true)
                }}
                /> 
             </div>
@@ -75,6 +83,7 @@ function Features(props) {
                   img={cards[3].imgURL}
                   handleClick={(title) => {
                      setTitle(title)
+                     setSummary(true)
                   }}
                />
             </div>
@@ -90,6 +99,7 @@ function Features(props) {
                img={cards[4].imgURL}
                handleClick={(title) => {
                   setTitle(title)
+                  setSummary(true)
                }}
                /> 
             </div>
@@ -101,15 +111,27 @@ function Features(props) {
                   img={cards[5].imgURL}
                   handleClick={(title) => {
                      setTitle(title)
+                     setSummary(true)
+                  }}
+               />
+            </div>
+            <div className="col">
+                  <Feature
+                  title={cards[6].title}
+                  text={cards[6].text}
+                  img={cards[6].imgURL}
+                  handleClick={(title) => {
+                     setTitle(title)
+                     setSummary(true)
                   }}
                />
             </div>
          </div>
 
       </div>
-      <Summary
-         title={title}
-      />
+      
+      {summary ? <Process title={title}/> : null}
+      
     </div>
     
   );

@@ -1,9 +1,10 @@
-import ebook from "./images/ebook.jpg";
+import ebook from "./images/ebook.png";
 import more from "./images/more.png";
 import poem from "./images/poet.jpg";
 import contract from "./images/summary.jpg";
 import shortstory from "./images/shortstoryWriter.jpg";
 import Translate from "./images/languages.png";
+import Audio from "./images/text-to-speech.png";
 
 
 
@@ -32,6 +33,11 @@ const Cards = [
         title: "Translation",
         text: "Unable to get a language   Get it in your language!",
         imgURL: Translate
+    },
+    {
+        title: "Text To Audio",
+        text: "Want An Audio Book? Try Here!",
+        imgURL: Audio
     },
     {
         title: "More",
