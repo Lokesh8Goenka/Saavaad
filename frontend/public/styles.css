@@ -38,6 +38,7 @@ td {
 p {
   /*For all the p tags*/
   color: #ff6e49;
+  text-align: center;
 }
 
 h1 {
@@ -63,15 +64,22 @@ h3 {
   text-align: center;
   border-radius: 15px;
 }
-p {
-  text-align: center;
+h5{
+  font-family: 'Maven Pro', sans-serif;
 }
 
 textarea {
   /*For the text area in the summary section*/
   overflow: hidden;
   vertical-align: center;
+  border: "1px solid";
+  border-color: #52cf49;
+  border-radius: 10px;
 }
+.scroll::-webkit-scrollbar {
+  display: none;    /*to make scroll invisible*/
+}
+
 input {
   /*For the input area in the summary section*/
   border: none;
@@ -88,16 +96,32 @@ input:focus {
 
 textarea:hover {
   /*For the text area ON HOVER*/
-  box-shadow: 0 4px 15px 0 rgba(205, 52, 185, 0.75);
+  box-shadow: 0 4px 15px 0 #609966;
+  border-color: #5D9C59;
 }
 
 textarea:focus {
   /*For the text area ON FOCUS*/
-  box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 15px 0 #609966;
+  border-color: #5D9C59;
 }
 
 h4{
   text-align: left;
+}
+
+#poemTheme{
+  color: #fff;
+}
+
+form{
+  margin: 20px;
+}
+
+
+output:hover{
+  box-shadow: 0 4px 15px 0 #2192FF;
+  border-color: #264980;
 }
 
 ul{
@@ -106,9 +130,17 @@ ul{
 }
 
 li{
-  text-align: left;
+  color: #fff;
+  text-align: center;
+  /* border-radius: 20px; */
+  /* max-width: 100px; 
+  max-height: 30px; */
 }
 /****************************************** Class *******************************************/
+
+/* .row .col{
+  padding: 0;
+} */
 
 .navbar {
   /*For the navbar class at the top*/
@@ -123,10 +155,7 @@ li{
   background-color: #fff;
   color: #13183e;
   text-align: center;
-  height: 50px;
-  width: 100px;
-  font-size: 25px;
-  padding-bottom: 2px;
+  font-size: 18px;
 }
 
 .loginNavbar:hover{
@@ -135,9 +164,19 @@ li{
 }
 
 .main {
-  background-color: #13183e;
+  background-color: #ffffff;
 }
-.main h1 {
+/* .main h1 {
+  background: -webkit-linear-gradient(
+    90deg,
+    rgba(255, 110, 73, 1) 0%,
+    rgba(205, 52, 185, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.main .heading {
   background: -webkit-linear-gradient(
     90deg,
     rgba(255, 110, 73, 1) 0%,
@@ -146,6 +185,7 @@ li{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 
 .image {
   /*For the image class in the home (the gif)*/
@@ -268,12 +308,68 @@ li{
 
 .about {
   color: white;
+  background-color: #13183e;
 }
 
 .about h3 {
   font-size: 60px;
   color: #ff6e49;
 }
+
+.Tools{
+  height: auto;
+}
+
+.Tools li{
+  padding: 5px;
+  font-size: 20px;
+  margin: 20px 5px ;
+  color: white;
+  text-decoration: none;
+  height: auto;
+  width: auto;
+  border-radius: 5px;
+}
+.tList{
+  margin: 30px;
+  padding-left: 10px;
+  border-radius: 5px;
+  background-color: #13183e94;
+}
+
+
+.toolTitleCollapsed{
+  display: none;
+}
+
+.toolTitle{
+  color: #fff;
+  text-decoration: none;
+  width: auto;
+  border-radius: 5px;
+  /* transition: all 1s ease;
+  transition-property: width;
+
+  transition-duration: 1s; 
+  transition-timing-function: linear;  */
+}
+
+
+.toolList{
+  background-color: #dae3f3;
+}
+
+.form-select{   /*For file type slection*/
+  background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+
+/* .Tools li:hover{
+  border-radius: 20px;
+  background-color: #26cef733;
+  transition: 0.2s ease-in;
+} */
 
 .card:hover {
   transition: 0.5s ease-in;
@@ -288,11 +384,69 @@ li{
   padding: 20px;
 }
 
+
 .features {
   /*For the Features component*/
   /* background-color: #2B368A; */
-  background-color: rgba(38, 206, 247, 0.2);
+  background-color: #26cef733;
   height: auto;
+}
+
+.tools{
+  background-color: #ffffffb0;
+  border-radius: 25px;
+  padding: 30px;
+  margin: 10px 5px;
+}
+
+.tools h3{
+  opacity: 0.5;
+}
+
+.tools p{
+  opacity: 0.5;
+}
+
+.toolsimg{
+  opacity: 0.5;
+}
+
+.tools:hover{
+  background-color: #fff;
+  animation: shake 1s;
+  transition: all 1s ease;
+}
+
+.tools:hover h3{
+  opacity: 1;
+  transition: all 1s ease;
+}
+
+.tools:hover .toolsimg{
+  opacity: 1;
+  transition: all 1s ease;
+}
+
+.tools:hover p{
+  opacity: 1;
+  transition: all 1s ease;
+}
+
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  /* 20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  } */
+  
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+}
 }
 
 .img-fluid {
@@ -309,8 +463,12 @@ li{
 
 .summary {
   /*For the Summary component*/
-  background-color: #13183e;
+  /* background-color: #13183e; */
+  /* background-color: #fff; */
+  background-color: #dae3f3;
+  background-blend-mode: lighten;
   text-align: center;
+  height: auto;
 }
 
 .poemTheme{
@@ -320,8 +478,17 @@ li{
   border-radius: 20px;
 }
 
+#poemDownload{
+  width: auto;
+  height: auto;
+  font-size: 18px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .imgUpload .col {
   /*For the col inside the image upload comp*/
+  background-color: "#dae3f3" ;
   padding: 0;
   align-content: center;
 }
@@ -329,24 +496,19 @@ li{
 .submitBtn {
   /*For the submit button in Summary component*/
   color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 110, 73, 1) 0%,
-    rgba(205, 52, 185, 1) 100%
-  );
+  background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   /* box-shadow: 0 4px 15px 0 rgba(205,52,185, 0.75); */
-  border-radius: 25px;
-  height: 20vh;
-  width: 20vw;
-  font-size: 50px;
-  font-family: "Shantell Sans", cursive;
+  border-radius: 10px;
+  font-size: 22px;
+  padding: 10px;
   margin-top: 15px;
 }
 .submitBtn:hover {
   /*For the submit button ON HOVER in Summary component*/
   transition: 0.5s ease;
   /* box-shadow: 0 4px 15px 0 rgba(255, 255, 255, 1); */
-  box-shadow: 0 4px 15px 0 rgba(205, 52, 185, 0.75);
+  box-shadow: 0 4px 10px 0 #2192FF;
 }
 .submitBtn:focus {
   /*For the submit button ON FOCUS in Summary component*/
@@ -355,15 +517,7 @@ li{
 
 .submitBtnDisable {
   color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 110, 73, 1) 100%,
-    rgba(205, 52, 185, 1) 0%
-  );
   border-radius: 25px;
-  height: 20vh;
-  width: 20vw;
-  font-size: 50px;
   font-family: "Shantell Sans", cursive;
   margin-top: 15px;
   content: "Processing";
@@ -419,7 +573,7 @@ li{
 .footer {
   /*For the Footer component*/
   color: #ffff;
-  background-color: #13183e;
+  background-color: rgb(19, 24, 62);
   /* height: 30px; */
   text-align: center;
 }
@@ -427,6 +581,16 @@ li{
 .footer col{
   padding: 0%;
   margin: auto;
+}
+
+.footerHeading{
+  color: #cd34b9;
+  text-align: center;
+  margin-top: -50px;
+}
+
+.footerHeading:hover{
+  color: #ff6e49;
 }
 
 hr{
@@ -440,26 +604,48 @@ hr{
 
 /****************************************** ID *******************************************/
 
+#heading{
+  /* background-color: #0093E9; */
+  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  font-family: 'Dongle', sans-serif;
+  font-weight: 700;
+}
+
+#fileUplaodImg{
+  height: 50px;
+}
+
+#customText:hover{
+  color:#cd34b9;
+}
+
+#gobtn{ /*for sending the image (Uplaod image)*/
+  background-color: #0093E9;
+  background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
 .imgUpload .col #fileUpload {
   /*For file upload button*/
   color: #ffffff;
-  height: 50px;
-  font-size: 25px;
-  font-family: "Shantell Sans", cursive;
-  border-radius: 25px;
+  background: #13183e;
+  padding: 10px;
+  /* height: 50px; */
+  font-size: 22px;
+  /* font-family: "Shantell Sans", cursive; */
+  border-radius: 15px;
 }
 
 .imgUpload .col #fileUpload:hover {
   /*For the file upload button ON HOVER*/
   transition: 0.5s ease-in;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(205, 52, 185, 1) 0%,
     rgba(255, 110, 73, 1) 100%
-  );
+  ); */
   box-shadow: 0 4px 25px 0 rgba(255, 255, 255, 0.75);
-
-  /* color: #cd34b9; */
 }
 
 /*Animate the button hover*/
@@ -495,120 +681,31 @@ hr{
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+
 .modal-header .btn-close {
   visibility: hidden;
 }
 
-/*For loading*/
-.loader-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  background: rgba(0, 0, 0, 0.834);
-  z-index: 1;
-}
-
-.spinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: #3d5af1 transparent #3d5af1 transparent;
-  border-radius: 50%;
-  animation: spin-anim 1.2s linear infinite;
-}
-
-@keyframes spin-anim {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 .decorationL {
   height: 100px;
   width: 100px;
   position: absolute;
   z-index: 2;
-  float: left;
-  left: 20px;
-  rotate: -30deg;
+  /* float: left; */
+  left: 300px;
+  /* rotate: -30deg; */
+  /* visibility: hidden; */
 }
 
 .decorationR {
   height: 100px;
   width: 100px;
-  position: absolute;
+  /* position: absolute; */
   z-index: 2;
-  float: right;
-  right: 50px;
-  rotate: 30deg;
-}
-
-.feature .container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-warp: warp;
-  padding: 30px;
-}
-
-.feature .container .cards {
-  position: relative;
-  max-width: 300px;
-  height: 215px;
-  background-color: #fff;
-  margin: 30px 10px;
-  padding: 20px 15px;
-
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-  transition: 0.3s ease-in-out;
-  border-radius: 15px;
-}
-.feature .container .cards:hover {
-  height: 320px;
-}
-
-.feature .container .cards .image {
-  position: relative;
-  width: 260px;
-  height: 260px;
-
-  top: -40%;
-  left: 8px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.feature .container .cards .image img {
-  max-width: 100%;
-  height: 80%;
-  width: 80%;
-  border-radius: 15px;
-}
-
-.feature .container .cards .content {
-  position: relative;
-  top: -140px;
-  padding: 10px 15px;
-  color: #111;
-  text-align: center;
-
-  visibility: hidden;
-  opacity: 0;
-  transition: 0.3s ease-in-out;
-}
-
-.feature .container .cards:hover .content {
-  margin-top: 30px;
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0.2s;
+  /* float: right; */
+  right: 300px;
+  /* rotate: 30deg; */
+  /* visibility: hidden; */
 }

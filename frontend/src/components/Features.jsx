@@ -7,10 +7,12 @@ import agreement from "../images/agreement.png";
 import writer from "../images/copywriter.png";
 
 const h2Style = {
-   fontSize: "70px",
-   color: "#fff",
-   background: 'linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%) ',
-   padding: "10px"
+   fontSize: "50px",
+   color: "#13183e",
+   // backgroundColor: "#",
+   // width: "200px"
+   // background: 'linear-gradient(90deg, rgba(255,110,73,1) 0%, rgba(205,52,185,1) 100%) ',
+   // padding: "10px"
 }
 
 
@@ -24,7 +26,7 @@ function Features(props) {
   return(
     <div className="features"  id='features'><br /><br />
         {/* <div className="toolsheading"> */}
-        <h2 style={h2Style}> Tools </h2><br /><br />
+        <h2 style={h2Style}> Tools </h2>
         
          <p>*Double Click the Tool you want to use*</p>
         
@@ -58,11 +60,6 @@ function Features(props) {
                      }}
                   />
             </div>
-            
-         </div>
-         <img className="decorationL" src={agreement} alt="decoration" />
-         <div className="row">
-
             <div className="col">
                <Feature
                
@@ -75,7 +72,9 @@ function Features(props) {
                }}
                /> 
             </div>
-            
+         </div>
+         <img className="decorationL" src={agreement} alt="decoration" />
+         <div className="row">
             <div className="col">
                   <Feature
                   title={cards[3].title}
@@ -87,11 +86,6 @@ function Features(props) {
                   }}
                />
             </div>
-          
-         </div>
-         <img className="decorationR" src={writer} alt="decoration"  />
-
-         <div className="row">
             <div className="col">
                <Feature
                title={cards[4].title}
@@ -115,7 +109,14 @@ function Features(props) {
                   }}
                />
             </div>
-            <div className="col">
+            
+          
+         </div>
+         {/* <img className="decorationR" src={writer} alt="decoration"  /> */}
+
+         <div className="row">
+         <div className="col-4"></div>
+            <div className="col-4">
                   <Feature
                   title={cards[6].title}
                   text={cards[6].text}
@@ -127,11 +128,11 @@ function Features(props) {
                />
             </div>
          </div>
-
+         <div className="col-4"></div>
       </div>
       
       {summary ? <Process title={title}/> : null}
-      
+      <br />
     </div>
     
   );

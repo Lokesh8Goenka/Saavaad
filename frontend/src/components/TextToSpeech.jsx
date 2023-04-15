@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import useSound from 'use-sound';
 import CountUp from "react-countup";
+import ReactPlayer from 'react-player';
+import ReactAudioPlayer from 'react-audio-player';
+import Mic from "../images/voice.png";
 
 const headingStyle = {
   color: "#fff",
@@ -8,28 +10,28 @@ const headingStyle = {
   fontSize: "60px",
 };
 
-function TextToSpeech(props) {
+function Translate(props) {
   const [inputText, setInputText] = useState("");
-  const [audioURI, setAudioURI] = useState("");
-  // const [disable, setDisable] = useState(false);
+  const [resultText, setResultText] = useState("");
+  const [disable, setDisable] = useState(false);
   const [isActive, setIsActive] = useState(true);
-  const [btntext, setBtntext] = useState("Audio");
   const [inlength, setINlength] = useState(0);
   const [outlength, setOutlength] = useState(0);
   const [resCount, setResCount] = useState(false);
   const [twocols, setTwoCols] = useState(false);
+  const [audio, setAudio] = useState();
 
 
   const handleSubmit = async (event) => {
-    // setDisable(true);
+     event.preventDefault();
+    setDisable(true);
     setIsActive(false);
-    setBtntext("Processing");
     setINlength(inputText.split(" ").length);
 
-    event.preventDefault();
+   
     if (inputText) {
       const response = await fetch(
-        "http://3543-104-154-158-197.ngrok.io/text_audio",
+        "https://clickl.serveo.net/text_audio",
         // "http://192.168.34.133:12345/text_audio",
         {
           method: "POST",
@@ -41,34 +43,37 @@ function TextToSpeech(props) {
           }),
         }
       );
+      // const result = ;
+      console.log("Audio");
+      // console.log(typeof(result));
+      const url = URL.createObjectURL(await response.blob());
+      setAudio(url)
       setTwoCols(true);
-      const audioUrl = await response.json();
-      setAudioURI(audioUrl);
-
-      // console.log(audioUrl);
       setResCount(true);
+      setDisable(false);
       setIsActive(true);
-      setBtntext("Start");
     }
 };
 
   const handleChange = (event) => {
     setInputText(event.target.value);
   };
-  const [playSound] = useSound(audioURI);
 
   return (
     <div className="summary" id="summary">
-      <br />
-      <br />
-      <h1 style={headingStyle}>{props.title}</h1>
+      {/* <h1 style={headingStyle}>{props.title}</h1> */}
         <div className="container">
-
+        <br />
+          <div style={{backgroundColor: "white", borderRadius: "20px"}}>
+            <br />
+          <h2 id="heading">Text To Speech</h2>
+          <hr style={{color:"#5D9C59", width: "100%"}} />
           <form onSubmit={handleSubmit}>
             <div className="row">
               <div className="col">
                 <label htmlFor="text-input"></label>
                 <textarea
+                  className="scroll"
                   style={{ overflow: "scroll" }}
                   type="text"
                   cols="100"
@@ -82,12 +87,19 @@ function TextToSpeech(props) {
                   <CountUp start={0} end={inlength} duration={3} />
                 </h5>
               </div>
-              <div className="col" >
-                <button onClick={() => playSound()}>
-                Play 
-                </button>
+              <div className="col" style={{
+                        textAlign:"left"
+                      }}>
+
+                <ReactAudioPlayer
+                  id="Mic"
+                  style={{visibility: "hidden"}}
+                  src={audio}
+                  autoPlay
+                  controls
+                />
+                <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label>
               </div>
-              
             </div>
             <div className="row">
               <div className="col">
@@ -103,9 +115,10 @@ function TextToSpeech(props) {
               </div>
             </div>
           </form>
+          </div>          
         </div>
     </div>
   );
 }
 
-export default TextToSpeech;
+export default Translate;

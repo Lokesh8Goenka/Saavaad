@@ -12,7 +12,7 @@ const headingStyle = {
   fontSize: "60px",
 };
 
-function Poems(props) {
+function ShortStory(props) {
   const [poem, setPoem] = useState("");
   const [inputText, setInputText] = useState("");
   const [isActive, setIsActive] = useState(true);
@@ -90,7 +90,7 @@ function Poems(props) {
                 <CountUp start={0} end={inlength} duration={3} />
               </h5>
             </div>
-            <div className="col">
+            {/* <div className="col">
               <h3 id="poemTheme">What Describes Your Poem's Theme The best ?</h3>
               <br />
               <ul>
@@ -123,7 +123,7 @@ function Poems(props) {
                 </li>
                 <br />
               </ul>
-            </div>
+            </div> */}
           </div>
           <div className="row">
             <div className="col">
@@ -132,7 +132,7 @@ function Poems(props) {
                 disable
                 type="submit"
               >
-                Poem
+                Story
               </button>
               <br />
               <br />
@@ -174,7 +174,7 @@ function Poems(props) {
   );
 }
 
-export default Poems;
+export default ShortStory;
 
 // To a Butterfly
 // I’ve watched you now a full half-hour,

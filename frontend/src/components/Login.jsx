@@ -11,7 +11,31 @@ const h2Style = {
 }
 
 function MyVerticallyCenteredModal(props) {
+  function handleSubmit(event){
+    event.preventDefault();
+    console.log("Inside submit");
+    const data = new FormData(event.currentTarget);
+    const requestData = {
+      username: data.get("username"),
+      password: data.get("password")
+    }
 
+    fetch("http://192.168.34.132:8000" + "/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      mode:"cors",
+      body: JSON.stringify(requestData)
+    })
+    .then((response) => response.json())
+    .then((data) =>{
+
+    })
+    .catch((err) =>{
+      console.log(err);
+    })
+  }
   
 
     return (
@@ -28,7 +52,7 @@ function MyVerticallyCenteredModal(props) {
           
         </Modal.Header>
         <Modal.Body>
-                <Form>
+                <Form onSubmit={handleSubmit}>
                     {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" />
@@ -39,12 +63,12 @@ function MyVerticallyCenteredModal(props) {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Username</Form.Label>
-                        <Form.Control type="text" placeholder="User Name" />
+                        <Form.Control type="text" placeholder="User Name" name="username"/>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                        <Form.Control type="password" placeholder="Password" name="password" />
                     </Form.Group>
                     <Link to="features" spy={true} smooth={true} offset={50} duration={500} style={{float: "right"}}>
                         Don't have an account

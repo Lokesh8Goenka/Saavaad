@@ -1,8 +1,8 @@
 import React from 'react';
-
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Features from "./Features";
+import Tools from "./Tools";
+// import Features from "./Features";
 import Home from "./Home";
 
 
@@ -11,7 +11,8 @@ function App(){
         <div>
             <Navbar />
             <Home />
-            <Features />
+            <Tools />
+            {/* <Features /> */}
             <Footer />
         </div>
     );
