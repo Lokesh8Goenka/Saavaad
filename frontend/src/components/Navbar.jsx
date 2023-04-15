@@ -5,10 +5,9 @@ import Login from "./Login.jsx";
 
 const ScrollLink = Scroll.ScrollLink
 const h1Style = {
-  height: "10vh",
+  // height: "10vh",
   objectFit: "contain",
   marginLeft: "50px",
-  // color: "#13183e",
 }
 
 function Navbar() {

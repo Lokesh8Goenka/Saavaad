@@ -5,6 +5,8 @@ import Contact from "./Contact.jsx";
 import Summary from "./Summary.jsx";
 import Translate from "./Translate.jsx";
 import TextToSpeech from "./TextToSpeech.jsx";
+import ShortStory from "./ShortStory.jsx";
+import Ebook from "./Ebook.jsx";
 
 function Process(props) {
   return (
@@ -19,6 +21,10 @@ function Process(props) {
         <TextToSpeech title={props.title} />
       ) : props.title === "Poem" ? (
         <Poem title={props.title} />
+      ) : props.title === "Short Story" ? (
+        <ShortStory title={props.title} />
+      ) : props.title === "Ebook" ? (
+        <Ebook title={props.title} />
       ) : null}
     </div>
   );

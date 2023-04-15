@@ -1,8 +1,8 @@
 import ebook from "./images/ebook.png";
 import more from "./images/more.png";
-import poem from "./images/poet.jpg";
+import poem from "./images/poem.png";
 import contract from "./images/summary.jpg";
-import shortstory from "./images/shortstoryWriter.jpg";
+import shortstory from "./images/Story.png";
 import Translate from "./images/languages.png";
 import Audio from "./images/text-to-speech.png";
 

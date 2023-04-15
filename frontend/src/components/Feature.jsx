@@ -5,13 +5,22 @@ function Card(props) {
   return (
     <div className="feature">
       <Link to="process" spy={true} smooth={true} offset={50} duration={500}>
-        <div
+        <div className="container" 
           onClick={() => {
             props.handleClick(props.title);
           }}
-          className="container"
         >
-          <div className="cards">
+          <div className="tools">
+            <h3>{props.title}</h3>
+            <div className="toolsimg">
+              <img src={props.img} alt={props.title} style={{width: "30%"}} />
+            </div>
+            <div className="description">
+              <p>{props.text}</p>
+            </div>
+          </div>
+
+          {/* <div className="cards">
             <div className="image">
               <img src={props.img} alt={props.title} style={{width: "80%"}} />
             </div>
@@ -19,7 +28,7 @@ function Card(props) {
               <h3>{props.title}</h3>
               <p>{props.text}</p>
             </div>
-          </div>
+          </div> */}
         </div>
       </Link>
     </div>

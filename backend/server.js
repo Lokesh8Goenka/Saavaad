@@ -1,9 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
-
+app.use(
+    cors({
+        origin: "*",
+        credentials: true
+    })
+);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -18,14 +24,22 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model("Person", personSchema);
 
-const user = new Person ({
-    username : "Thillu",
-    password: "sairam"
+app.post("/login", (req, res) =>{
+    console.log("inside login");
+    Person.findOne({username: req.body.username})
+    .then((user) =>{
+        console.log(user);
+    })
 });
 
-user.save();
+// const user = new Person ({
+//     username : "Thillu",
+//     password: "sairam"
+// });
 
-app.listen(6000, () =>{
-    console.log("listening at port 6000");
+// user.save();
+
+app.listen(8000, () =>{
+    console.log("listening at port 8000");
 });
 
