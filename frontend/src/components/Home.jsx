@@ -9,6 +9,7 @@ import Choose from "../images/click.png";
 import WantLogin from './WantLogin';
 import dot from "../images/clickl_dots.png";
 import { Link } from "react-scroll";
+import AnimatedWave from "./AnimatedWave.tsx";
 // import loginImg from "../images/haveAnAccount.png";
 
 
@@ -41,7 +42,7 @@ function hoverON(e) {
 const [modalShow, setModalShow] = React.useState(false);
 
     return(
-        <div className="main container-fluid" style={{padding: "0"}}>
+        <div className="main container-fluid" style={{padding: "0", height: "auto"}}>
             {/* <div class="cont">
                 <div class="progress-bar" id="mybar"></div>
             </div> */}
@@ -68,7 +69,7 @@ const [modalShow, setModalShow] = React.useState(false);
                 repeat={Infinity}
                 />
                     {/* <h1 className="heading" style={h1Style}>Just Cl!ck It!</h1> */}
-                    <p style={{marginLeft: "250px", fontFamily: "'Shantell Sans', cursive"}}>A few clicks away.</p><br /><br />
+                    <p style={{marginLeft: "250px",fontSize: "30px",fontFamily: "'Dongle', sans-serif", color: "#13183e"}}>A few clicks away.</p><br /><br />
                     <Link to="tools" spy={true} smooth={true} offset={50} duration={500}>
                         <button className="explore"  onClick={() => setModalShow(true)} style={btnStyle}> Explore </button>     
                     </Link>
@@ -78,7 +79,7 @@ const [modalShow, setModalShow] = React.useState(false);
                     /> 
                 </div>
                 <div className="col"><br /><br />
-                    <img style={{marginTop: "10px"}}  src={Clickl} alt="Clickl3" />
+                    <img style={{marginTop: "10px"}} src={Clickl} alt="Clickl3" />
                 </div> 
                 
             </div><br />
@@ -94,7 +95,7 @@ const [modalShow, setModalShow] = React.useState(false);
                 </div>
             </div> 
             <br /><br /><br />
-            <div className="about  text-center">
+            {/* <div className="about container  text-center">
                 <h3>How to use?</h3> <br />
                 <div className="row">
                     
@@ -151,8 +152,27 @@ const [modalShow, setModalShow] = React.useState(false);
                     
                 </div>
                 
-            </div>
+            </div> */}
             
+            <div style={{ position: "relative" }}>
+        <AnimatedWave
+          color={"#2192FF"}
+          animationDuration="4s"
+          opacity={"0.8"}
+        />
+        <AnimatedWave
+          color={"#26CEF7"}
+          animationDuration="12s"
+          opacity={"0.5"}
+        />
+        <AnimatedWave
+          color={"#1957FC"}
+          animationDirection="reverse"
+          animationDuration="10s"
+          opacity={"0.2"}
+        />
+      </div>
+
         </div>
     );
 }

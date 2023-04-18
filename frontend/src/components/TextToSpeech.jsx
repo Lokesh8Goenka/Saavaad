@@ -88,7 +88,7 @@ function Translate(props) {
                 </h5>
               </div>
               <div className="col" style={{
-                        textAlign:"left"
+                        textAlign:"center"
                       }}>
 
                 <ReactAudioPlayer
@@ -98,7 +98,7 @@ function Translate(props) {
                   autoPlay
                   controls
                 />
-                <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label>
+                <label htmlFor="Mic"><img  height="50px" src={Mic} alt="Mic" /></label>
               </div>
             </div>
             <div className="row">

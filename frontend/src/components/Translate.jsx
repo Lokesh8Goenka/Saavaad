@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CountUp from "react-countup";
-
+import ReactAudioPlayer from "react-audio-player";
+import $ from "jquery"
 
 const headingStyle = {
   color: "#fff",
@@ -19,7 +20,20 @@ function Translate(props) {
   const [resCount, setResCount] = useState(false);
   const [twocols, setTwoCols] = useState(false);
   const [src, setSrc] = useState("");
-
+  const [out, setOut] = useState("");
+  const [audio, setAudio] = useState();
+  const [showaudio, setshowaudio] = useState(false);
+  const [showsummary, setShowSummary] = useState(false);
+  const [dis, setDis] = useState();
+  const [srcName, setSrcName] = useState("");
+  const [langs, setLangs] = useState([]);
+  const [langName, setLangName] =useState("");
+  // let dis = "";
+  useEffect(() => {
+    if (langs.length === 0) {
+      setLangs(["en", "hi", "ml", "bn", "mr", "ur"]);
+    }
+  }, []);
   const handleSubmit = async (event) => {
     setDisable(true);
     setIsActive(false);
@@ -28,7 +42,10 @@ function Translate(props) {
 
     const Src = src;
     // console.log(Src);
-    const end = "en";
+    const end = out;
+    if (Src === end) {
+      alert("Both Source s=and result language is same!");
+    }
     event.preventDefault();
 
     if (inputText) {
@@ -64,31 +81,144 @@ function Translate(props) {
   const handleSrc = (event) => {
     // console.log(event.target.value);
     setSrc(event.target.value);
+    const option = $("#"+event.target.value)
+    // console.log(option[0].innerHTML);
+    setLangName(option[0].innerHTML);
+    // console.log(event.target);
+    
+    setSrcName(event.target.innerhtml);
+    // setDis(event.target.value);
+    // dis = event.target.value;
+    //setDis(src);
+    console.log(dis);
+    // {src}
     // console.log(src);
   };
+  const handleOut = (event) => {
+    // if (event.target.value)
+    setOut(event.target.value);
+  };
 
+  function showAudio() {
+    setShowSummary(false);
+    setshowaudio(true);
+  }
+
+  function showSummary() {
+    setshowaudio(false);
+    setShowSummary(true);
+  }
+
+  const handleSumAudio = async (event) => {
+    event.preventDefault();
+    setDisable(true);
+    setIsActive(false);
+    setINlength(resultText.split(" ").length);
+
+    if (inputText) {
+      const response = await fetch(
+        "https://clickl.serveo.net/text_audio",
+        // "http://192.168.34.133:12345/text_audio",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: resultText,
+          }),
+        }
+      );
+      // const result = ;
+      console.log("Audio");
+      // console.log(typeof(result));
+      const url = URL.createObjectURL(await response.blob());
+      setAudio(url);
+      setTwoCols(true);
+      setResCount(true);
+      setDisable(false);
+      setIsActive(true);
+    }
+  };
+  console.log(langName);
+  // console.log(srcName);
+
+  // console.log(src, dis);
   return (
     <div className="summary" id="summary">
       {/* <h1 style={headingStyle}>{props.title}</h1> */}
       <div className="container">
-        <br />
+        {/* <br /> */}
         <div style={{ backgroundColor: "white", borderRadius: "20px" }}>
-          <br />
+          {/* <br /> */}
           <h2 id="heading">Translation</h2>
-          <hr style={{ color: "#5D9C59", width: "100%" }} />
           <form onSubmit={handleSubmit}>
-            <select
-              style={{ width: "200px", color: "#0093E9" }}
-              className="form-select"
-              aria-label="Default select example"
-              // value={frm}
-              onChange={handleSrc}
-            >
-              <option defaultValue>From: </option>
-              <option value="hi">Hindi</option>
-              <option value="ml">Malayalam</option>
-              <option value="bn">Bengali</option>
-            </select>{" "}
+            <div className="row">
+              <select
+                style={{ width: "200px", color: "#0093E9" }}
+                className="form-select col-md-2"
+                aria-label="Default select example"
+                // value={frm}
+                onChange={handleSrc}
+              >
+                <option defaultValue>From: </option>
+                <option value="en" id="en" >English</option>
+                <option value="hi" id="hi">Hindi</option>
+                <option value="ml" id="ml">Malayalam</option>
+                <option value="bn" id="bn">Bengali</option>
+                <option value="mr" id="mr">Marathi</option>
+                <option value="ur" id="ur">Urdu</option>
+              </select>
+              <br />
+              <select
+                id="out"
+                style={{ width: "200px", color: "#0093E9" }}
+                className="form-select col-md-2"
+                aria-label="Default select example"
+                // value={frm}
+                onChange={handleOut}
+              >
+                {/* yahape map[ krenge] hide the other one */} 
+                {langs.length ? (
+                  langs.map((lang) => {
+                    return (
+                      <>
+                      {/* <option defaultValue>To: </option> */}
+                        {lang === src ? (
+                          <></>
+                        ) : (
+                          <option value={lang}>{lang}</option>
+                        )}
+                      </>
+                    );
+                  })
+                ) : (
+                  <></>
+                )}
+
+                {/* <option defaultValue>To: </option>
+                <option
+                  //  {src === "en" ? disabled: null}
+                  disabled
+                  value="en"
+                >
+                  English
+                </option>
+                {dis === "hi" ? (
+                  <option disabled value="hi">
+                    Hindi
+                  </option>
+                ) : (
+                  <option value="hi">Hindi</option>
+                )}
+
+                <option value="ml">Malayalam</option>
+                <option value="bn">Bengali</option>
+                <option value="mr">Marathi</option>
+                <option value="ur">Urdu</option> */}
+              </select>{" "}
+            </div>
+
             <br />
             <div className="row">
               <div className="col">
@@ -162,6 +292,47 @@ function Translate(props) {
                 <br />
               </div>
             </div>
+            <div className="row">
+              <div className="col pipeline1" onClick={showAudio}>
+                <h3>Lazy to read, Hear it!</h3>
+              </div>
+              <div className="col pipeline1" onClick={showSummary}>
+                <h3>Want in another language?</h3>
+              </div>
+            </div>
+
+            {showaudio ? (
+              <div className="row">
+                <div className="col-md">
+                  <button
+                    className={isActive ? "submitBtn" : "submitBtnDisable"}
+                    disabled={disable}
+                    type="submit"
+                    style={{ fontSize: "25px" }}
+                    onClick={handleSumAudio}
+                  >
+                    Audio
+                  </button>
+                  <br />
+                  <br />
+                </div>
+                <div
+                  className="col-md"
+                  style={{
+                    textAlign: "right",
+                  }}
+                >
+                  <ReactAudioPlayer
+                    id="Mic"
+                    style={{ color: "#08AEEA" }}
+                    src={audio}
+                    autoPlay
+                    controls
+                  />
+                  {/* <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label> */}
+                </div>
+              </div>
+            ) : null}
           </form>
         </div>
       </div>

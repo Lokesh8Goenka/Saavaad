@@ -1,6 +1,11 @@
 import React ,{useState} from "react";
 import Modal from 'react-bootstrap/Modal';
 import { Link } from "react-scroll";
+import Form from 'react-bootstrap/Form';
+import FloatingLabel from 'react-bootstrap/FloatingLabel';
+import mail from "../images/email.png";
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import {
   Box,
   Container,
@@ -20,6 +25,15 @@ function Footer() {
   const teamClose = () => setTeam(false);
   const teamShow = () => setTeam(true);
 
+  const [contact, setContact] = useState(false);
+  const contactClose = () => setContact(false);
+  const contactShow = () => setContact(true);
+
+
+  const formStyle = {
+    color: "white"
+}
+
   return (
     <Box>
         <Modal show={show}
@@ -32,12 +46,12 @@ function Footer() {
             {/* <img style={{height: "30vh", float: "right", marginRight: "10vw"}} src={Save} alt="save doc" /> */}
           </Modal.Header>
           <Modal.Body>
-                  <h5>Why Modal?</h5>
+                  <h5>Contact</h5>
           </Modal.Body>
         </Modal>
 
         <Modal show={team}
-         size="lg"
+         size="xl"
          onHide={teamClose}>
           <Modal.Header closeButton>
             <Modal.Title id="contained-modal-title-vcenter">
@@ -45,8 +59,64 @@ function Footer() {
             </Modal.Title>
             {/* <img style={{height: "30vh", float: "right", marginRight: "10vw"}} src={Save} alt="save doc" /> */}
           </Modal.Header>
+          <Modal.Body className="row">
+            <Card style={{ width: '18rem', marginLeft: "20px",marginRight: "50px" }} className="col-md-auto">
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>Kodi Rohit</Card.Title>
+                <Card.Text>
+                  For ML modals
+                </Card.Text>
+                <Button variant="primary">Contact</Button>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: '18rem',marginLeft: "50px",marginRight: "90px" }} className="col-md-auto">
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>Lokesh Goenka</Card.Title>
+                <Card.Text>
+                  For Website
+                </Card.Text>
+                <Button variant="primary">Contact</Button>
+              </Card.Body>
+            </Card>
+            <Card style={{ width: '18rem',  }} className="col-md-auto">
+              <Card.Img variant="top" src="holder.js/100px180" />
+              <Card.Body>
+                <Card.Title>Thilak D</Card.Title>
+                <Card.Text>
+                  For Mobile Application
+                </Card.Text>
+                <Button variant="primary">Contact</Button>
+              </Card.Body>
+            </Card>
+          </Modal.Body>
+        </Modal>
+
+        <Modal show={contact}
+         size="lg"
+         onHide={contactClose}>
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+            <h2>Write To Us!</h2>
+            </Modal.Title>
+            {/* <img style={{height: "30vh", float: "right", marginRight: "10vw"}} src={Save} alt="save doc" /> */}
+          </Modal.Header>
           <Modal.Body>
-                  <h5>Our Team</h5>
+               <Form style={formStyle}>
+                  <FloatingLabel controlId="floatingTextarea2" label="Comments">
+                      <Form.Control
+                      as="textarea"
+                      placeholder="Leave a comment here"
+                      style={{ height: '50vh' }}
+                      />
+                  </FloatingLabel><br /><br />
+                          <img src={mail} alt={mail}
+                          onClick={() => window.location = 'mailto:goenkalokesh@gmail.com'}
+                          style={{width: "5%"}} 
+                          />
+                      {/* /> */}
+                </Form>
           </Modal.Body>
         </Modal>
       <h1 className="footerHeading">
@@ -82,7 +152,7 @@ function Footer() {
               >
                 <FooterLink >Github</FooterLink>
             </Link>
-            <FooterLink href="#">Mail</FooterLink>
+            <FooterLink onClick={contactShow}>Mail</FooterLink>
             {/* <FooterLink href="#">Mumbai</FooterLink> */}
           </Column>
           <Column>

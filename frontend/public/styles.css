@@ -6,13 +6,23 @@
 
 */
 
+@keyframes wave {
+  0% {
+    background-position-x: 1000px;
+  }
+  100% {
+    background-position-x: 0px;
+  }
+}
+
+
 /****************************************** tags *******************************************/
 
 body {
   /*the whole body of the webiste*/
   margin: 0;
   padding: 0;
-  background-color: rgb(38, 206, 247);
+  background-color: #26cef7;
   /* overflow: hidden; */
 }
 
@@ -73,7 +83,7 @@ textarea {
   overflow: hidden;
   vertical-align: center;
   border: "1px solid";
-  border-color: #52cf49;
+  border-color: rgb(82, 207, 73);
   border-radius: 10px;
 }
 .scroll::-webkit-scrollbar {
@@ -145,7 +155,9 @@ li{
 .navbar {
   /*For the navbar class at the top*/
   margin: 0 !important;
-  background-color: #13183e;
+  /* background-color: #13183e; */
+   background-color: #0093E9;
+  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
 }
 .navbar h1 {
   color: white;
@@ -153,14 +165,26 @@ li{
 
 .loginNavbar{
   background-color: #fff;
-  color: #13183e;
+  color: #0093E9;
+  padding: 10px;
+  border-radius: 5px;
   text-align: center;
-  font-size: 18px;
+  font-size: 22px;
 }
 
 .loginNavbar:hover{
   border-radius: 25px;
   transition: 0.3s;
+}
+
+.pipeline1{ /*for summary -> audio and translate*/
+  color: #2AF598;
+  font-family: 'Dongle', sans-serif;
+  /* font-weight: 700; */
+}
+
+.pipeline1:hover{ /*for summary -> audio and translate*/
+  color: #0093E9;
 }
 
 .main {
@@ -177,13 +201,17 @@ li{
 } */
 
 .main .heading {
-  background: -webkit-linear-gradient(
+   background-color: #0093E9;
+  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* background: -webkit-linear-gradient(
     90deg,
     rgba(255, 110, 73, 1) 0%,
     rgba(205, 52, 185, 1) 100%
   );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 
@@ -200,12 +228,14 @@ li{
 .explore {
   /*For the button in the home component*/
   margin-left: 200px;
-  background: rgb(255, 110, 73);
+   /* background-color: #0093E9; */
+  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+  /* background: rgb(255, 110, 73);
   background: linear-gradient(
     90deg,
     rgba(255, 110, 73, 1) 0%,
     rgba(205, 52, 185, 1) 100%
-  );
+  ); */
 }
 
 /* .explore:hover{
@@ -254,10 +284,11 @@ li{
   font-size: 38px;
 }
 
-.features {
+/* .features {
+  
   background-color: rgba(38, 206, 247, 0.2);
   height: 100vh;
-}
+} */
 
 /* .explore:hover{
     transition: 0.1s  ease-in;
@@ -320,6 +351,10 @@ li{
   height: auto;
 }
 
+.Tools .col{
+  padding: 0;
+}
+
 .Tools li{
   padding: 5px;
   font-size: 20px;
@@ -354,13 +389,16 @@ li{
   transition-timing-function: linear;  */
 }
 
-
 .toolList{
-  background-color: #dae3f3;
+  /* background-color: #dae3f3; */
+  /* background-color: rgba(255, 255, 255,0.5); */
+  /* background-color: #26cdf74b; */
+  background-color: #0093E9;
+  background: linear-gradient(160deg, #80d0c7 0%, #0093E9 100%);
 }
 
 .form-select{   /*For file type slection*/
-  background-color: #0093E9;
+  background-color: rgb(0, 147, 233);
 background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
 
@@ -388,7 +426,8 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 .features {
   /*For the Features component*/
   /* background-color: #2B368A; */
-  background-color: #26cef733;
+  background-color: rgba(33, 146, 255,0.8);
+  /* background-color: #26cef733; */
   height: auto;
 }
 
@@ -465,7 +504,7 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   /*For the Summary component*/
   /* background-color: #13183e; */
   /* background-color: #fff; */
-  background-color: #dae3f3;
+  background-color: #26cdf74b;
   background-blend-mode: lighten;
   text-align: center;
   height: auto;
@@ -603,10 +642,22 @@ hr{
 }
 
 /****************************************** ID *******************************************/
+#Saavaad{
+  font-family: 'Dongle', sans-serif;
+  font-weight: 700;
+  font-size: 50px;
+}
+
+#quote{
+  font-family: 'Merriweather', serif;
+}
+
 
 #heading{
   /* background-color: #0093E9; */
-  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
+  /* background-color: #08AEEA; */
+  background: linear-gradient(0deg, #08AEEA 0%, #2AF598 100%);
+  /* background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 60px;
@@ -626,6 +677,16 @@ hr{
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
 }
+
+#copyRes{
+   background-color: white;
+   color: #26cef7;
+   width: 50px;
+   border-radius: 10px;
+   border-color: #08AEEA;
+   border: 1px solid;
+}
+
 .imgUpload .col #fileUpload {
   /*For file upload button*/
   color: #ffffff;

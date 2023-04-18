@@ -35,7 +35,7 @@ function Features(props) {
 
       <div className="container text-center">
          {/* console.log({cards[0].title}); */}
-         <img className="decorationR" src={writing} alt="decoration" />
+         {/* <img className="decorationR" src={writing} alt="decoration" /> */}
         <div className="row">
             <div className="col">
                <Feature
@@ -54,10 +54,10 @@ function Features(props) {
                      title={cards[1].title}
                      text={cards[1].text}
                      img={cards[1].imgURL}
-                     handleClick={(title) => {
-                        setTitle(title)
-                        setSummary(true)
-                     }}
+                     // handleClick={(title) => {
+                     //    setTitle(title)
+                     //    setSummary(true)
+                     // }}
                   />
             </div>
             <div className="col">
@@ -66,16 +66,17 @@ function Features(props) {
                title={cards[2].title}
                text={cards[2].text}
                img={cards[2].imgURL}
-               handleClick={(title) => {
-                  setTitle(title)
-                  setSummary(true)
-               }}
+               // handleClick={(title) => {
+               //    setTitle(title)
+               //    setSummary(true)
+               // }}
                /> 
             </div>
          </div>
-         <img className="decorationL" src={agreement} alt="decoration" />
-         <div className="row">
-            <div className="col">
+         {/* <img className="decorationL" src={agreement} alt="decoration" /> */}
+         {/* <div className="row">
+            <div className="col-4"></div>
+            <div className="col-4">
                   <Feature
                   title={cards[3].title}
                   text={cards[3].text}
@@ -85,8 +86,9 @@ function Features(props) {
                      setSummary(true)
                   }}
                />
-            </div>
-            <div className="col">
+            </div> */}
+            {/* <div className="col-4"></div> */}
+            {/* <div className="col">
                <Feature
                title={cards[4].title}
                text={cards[4].text}
@@ -108,30 +110,30 @@ function Features(props) {
                      setSummary(true)
                   }}
                />
-            </div>
+            </div> */}
             
           
-         </div>
+         {/* </div> */}
          {/* <img className="decorationR" src={writer} alt="decoration"  /> */}
 
-         <div className="row">
-         <div className="col-4"></div>
-            <div className="col-4">
-                  <Feature
-                  title={cards[6].title}
-                  text={cards[6].text}
-                  img={cards[6].imgURL}
-                  handleClick={(title) => {
-                     setTitle(title)
-                     setSummary(true)
-                  }}
-               />
-            </div>
-         </div>
-         <div className="col-4"></div>
-      </div>
+      {/*<div className="row">
+                  <div className="col-4"></div>
+                  <div className="col-4">
+                        <Feature
+                        title={cards[6].title}
+                        text={cards[6].text}
+                        img={cards[6].imgURL}
+
+                        handleClick={(title) => {
+                           setTitle(title)
+                           setSummary(true)
+                        }}
+                     />
+                  </div>
+         </div>*/}
+      </div> 
       
-      {summary ? <Process title={title}/> : null}
+      {/* {summary ? <Process title={title}/> : null} */}
       <br />
     </div>
     

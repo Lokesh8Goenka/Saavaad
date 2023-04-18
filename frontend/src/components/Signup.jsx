@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Signup from "./Signup.jsx";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -10,10 +9,15 @@ const h2Style = {
   marginRight: "right",
 };
 
-function MyVerticallyCenteredModal(props) {
+function Signup(props) {
+  const [show, setShow] = React.useState(true);
+  const [loginShow, setloginShow] = React.useState(false);
 
-  const [signup, setSignup] = useState(false)
-
+  function handelVisible() {
+    console.log("reached");
+    setShow(false);
+    setloginShow(true);
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -21,10 +25,11 @@ function MyVerticallyCenteredModal(props) {
     const data = new FormData(event.currentTarget);
     const requestData = {
       username: data.get("username"),
+      email: data.get("email"),
       password: data.get("password"),
     };
 
-    fetch("https://login.serveo.net/login", {
+    fetch("https://login.serveo.net/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,22 +44,10 @@ function MyVerticallyCenteredModal(props) {
       });
   }
 
-  function handleClick() {
-    setSignup(true)
-  }
-
-  const [modalShow, setmodalShow] = useState(true);
-  const [signupShow, setSignupShow] = useState(false);
-
-  function handelVisible(){
-    console.log("reached");
-    setmodalShow(false);
-    setSignupShow(true);
-  }
-
   return (
-    <Modal 
-      show={modalShow}
+    <Modal
+      show={show}
+      // onHide={setShow(false)}
       dialogClassName="loginModal"
       {...props}
       size="lg"
@@ -63,7 +56,7 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h2 style={h2Style}>Save Your Clicks!</h2>
+          <h2 style={h2Style}>SignUp!</h2>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -82,6 +75,11 @@ function MyVerticallyCenteredModal(props) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" placeholder="User Email" name="email" />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -89,18 +87,11 @@ function MyVerticallyCenteredModal(props) {
               name="password"
             />
           </Form.Group>
-            <Link>
-                 <button onClick={handelVisible} > Don't have an account? </button>     
-            </Link>
-            <Signup  
-                show={signupShow}
-                onHide={() => setSignupShow(false)} 
-            />
-          <Button type="submit">Submit</Button>
+          <Button type="submit">Signup</Button>
         </Form>
       </Modal.Body>
     </Modal>
   );
 }
 
-export default MyVerticallyCenteredModal;
+export default Signup;
