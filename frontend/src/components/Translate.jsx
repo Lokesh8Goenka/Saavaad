@@ -50,7 +50,7 @@ function Translate(props) {
 
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/translate_" + Src + "_" + end,
+        "https://saavaad.serveo.net/translate_" + Src + "_" + end,
         // "http://192.168.34.133:12345/translate_hi_en",
         {
           method: "POST",
@@ -117,7 +117,7 @@ function Translate(props) {
 
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/text_audio",
+        "https://saavaad.serveo.net/text_audio",
         // "http://192.168.34.133:12345/text_audio",
         {
           method: "POST",
@@ -246,13 +246,13 @@ function Translate(props) {
                       color: "Black",
                       backgroundColor: "white",
                       width: "300px",
-                      height: "260px",
+                      height: "auto",
                     }}
                   >
                     {resultText}
                   </output>
                   {resCount ? (
-                    <h5 style={{ color: "#fff" }}>
+                    <h5 style={{ color: "#0093E9" }}>
                       Total Words:
                       <CountUp start={0} end={outlength} duration={3} />
                     </h5>
@@ -265,13 +265,13 @@ function Translate(props) {
                       color: "Black",
                       backgroundColor: "white",
                       width: "300px",
-                      height: "260px",
+                      height: "auto",
                     }}
                   >
                     {resultText}
                   </output>
                   {resCount ? (
-                    <h5 style={{ color: "#fff" }}>
+                    <h5 style={{ color: "#0093E9" }}>
                       Total Words:
                       <CountUp start={0} end={outlength} duration={3} />
                     </h5>

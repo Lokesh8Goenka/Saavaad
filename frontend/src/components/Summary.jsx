@@ -60,7 +60,7 @@ function Summary(props) {
     const end = out;
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/translate_en_"+ end,
+        "https://saavaad.serveo.net/translate_en_"+ end,
         // "http://192.168.34.133:12345/translate_hi_en",
         {
           method: "POST",
@@ -92,7 +92,7 @@ function Summary(props) {
 
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/text_audio",
+        "https://saavaad.serveo.net/text_audio",
         // "http://192.168.34.133:12345/text_audio",
         {
           method: "POST",
@@ -126,7 +126,7 @@ function Summary(props) {
     event.preventDefault();
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/text_summarize",
+        "https://saavaad.serveo.net/text_summarize",
         //"http://192.168.34.133:12345/text_summarize",
         {
           method: "POST",
@@ -268,7 +268,7 @@ function Summary(props) {
                   type="submit"
                   onClick={handleSubmit}
                 >
-                  {btntext}
+                  {btntext} {/* Start */}
                 </button>
                 <br />
                 <br />

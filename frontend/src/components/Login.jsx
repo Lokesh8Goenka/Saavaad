@@ -11,9 +11,7 @@ const h2Style = {
 };
 
 function MyVerticallyCenteredModal(props) {
-
-  const [signup, setSignup] = useState(false)
-
+  const [signup, setSignup] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,29 +29,31 @@ function MyVerticallyCenteredModal(props) {
       },
       mode: "cors",
       body: JSON.stringify(requestData),
-    })
-      .then((response) => response.json())
-      .then((data) => {})
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+
+    //.then((response) => response.json())
+    //.then((data) => {})
+    //.catch((err) => {
+    // console.log(err);
+    //});
+    //console.log(data);
   }
 
   function handleClick() {
-    setSignup(true)
+    setSignup(true);
   }
 
   const [modalShow, setmodalShow] = useState(true);
   const [signupShow, setSignupShow] = useState(false);
 
-  function handelVisible(){
+  function handelVisible() {
     console.log("reached");
     setmodalShow(false);
     setSignupShow(true);
   }
 
   return (
-    <Modal 
+    <Modal
       show={modalShow}
       dialogClassName="loginModal"
       {...props}
@@ -89,14 +89,21 @@ function MyVerticallyCenteredModal(props) {
               name="password"
             />
           </Form.Group>
-            <Link>
-                 <button onClick={handelVisible} > Don't have an account? </button>     
-            </Link>
-            <Signup  
-                show={signupShow}
-                onHide={() => setSignupShow(false)} 
-            />
-          <Button type="submit">Submit</Button>
+          <div className="row">
+            <div className="col">
+              <Button type="submit">Submit</Button>
+            </div>
+
+            <div className="col">
+              <Link>
+                <button id="createAcc" onClick={handelVisible}>
+                  {" "}
+                  Don't have an account?{" "}
+                </button>
+              </Link>
+              <Signup show={signupShow} onHide={() => setSignupShow(false)} />
+            </div>
+          </div>
         </Form>
       </Modal.Body>
     </Modal>

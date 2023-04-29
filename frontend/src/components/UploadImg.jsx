@@ -10,7 +10,6 @@ function App() {
   const [twocols, setTwoCols] = useState(false);
   const [type, setType] = useState("");
   const [src, setSrc] = useState("");
-
   const fileStyle = {
     marginLeft: "70px",
     width: "200px",
@@ -32,17 +31,19 @@ function App() {
     formData.append("file", file);
 
     fetch(
-      "https://clickl.serveo.net/" + type + "_text_summarize",
+      "https://saavaad.serveo.net/" + type + "_text_summarize",
       // 'http://172.28.0.12:12345/image_text_summarize',
       {
         method: "POST",
+        mode: "cors",
         body: formData,
       }
-    );
+    )
+    .then((response) => response.json())
+    .then((data) => setOutput(data))
+    .catch((error) => console.log(error));
+
     setTwoCols(true)
-      .then((response) => response.text())
-      .then((data) => setOutput(data))
-      .catch((error) => console.log(error));
     setIsActive(true);
     setBtntext("Go");
   };
@@ -60,7 +61,7 @@ function App() {
         <br />
         <div style={{ backgroundColor: "white", borderRadius: "20px" }}>
           <br />
-          <h2 id="heading">Image To Translation</h2>
+          <h2 id="heading">Image Summarisation</h2>
           <hr style={{ color: "#5D9C59", width: "100%" }} />
           <form onSubmit={handleSubmit}>
             <div className="row">
@@ -120,6 +121,7 @@ function App() {
                       color: "Black",
                       backgroundColor: "white",
                       width: "300px",
+                      boderColor: "solid 0.5px #26cef7",
                     }}
                   >
                     {output}
@@ -132,6 +134,7 @@ function App() {
                       color: "Black",
                       backgroundColor: "white",
                       width: "300px",
+                      boderColor: "solid 0.5px #26cef7",
                     }}
                   >
                     {output}

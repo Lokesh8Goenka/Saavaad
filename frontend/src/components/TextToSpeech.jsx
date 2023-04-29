@@ -27,11 +27,10 @@ function Translate(props) {
     setDisable(true);
     setIsActive(false);
     setINlength(inputText.split(" ").length);
-
    
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/text_audio",
+        "https://saavaad.serveo.net/text_audio",
         // "http://192.168.34.133:12345/text_audio",
         {
           method: "POST",
@@ -93,12 +92,12 @@ function Translate(props) {
 
                 <ReactAudioPlayer
                   id="Mic"
-                  style={{visibility: "hidden"}}
+                  // style={{visibility: "hidden"}}
                   src={audio}
                   autoPlay
                   controls
                 />
-                <label htmlFor="Mic"><img  height="50px" src={Mic} alt="Mic" /></label>
+                {/* <label htmlFor="Mic"><img  height="50px" src={Mic} alt="Mic" /></label> */}
               </div>
             </div>
             <div className="row">

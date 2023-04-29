@@ -11,7 +11,7 @@ import Audio from "./images/text-to-speech.png";
 const Cards = [
     {
         title: "Summary",
-        text: "Have a long documnet to read? Get a summary of it in no time.",
+        text: "Have a long documnet to read? Summarize it!",
         imgURL: contract
     },
     // {

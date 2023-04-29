@@ -51,6 +51,7 @@ p {
   text-align: center;
 }
 
+
 h1 {
   /*For all the h1 tags*/
   color: red;
@@ -147,10 +148,6 @@ li{
   max-height: 30px; */
 }
 /****************************************** Class *******************************************/
-
-/* .row .col{
-  padding: 0;
-} */
 
 .navbar {
   /*For the navbar class at the top*/
@@ -408,10 +405,13 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   background-color: #26cef733;
   transition: 0.2s ease-in;
 } */
+.card{
+  box-shadow: 0 4px 15px 0  #80D0C7;
+}
 
 .card:hover {
   transition: 0.5s ease-in;
-  box-shadow: 0 4px 15px 0 rgba(255, 110, 73, 1);
+  box-shadow: 0 4px 15px 0  rgb(0, 147, 233);
 }
 
 .card img {
@@ -429,6 +429,10 @@ background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   background-color: rgba(33, 146, 255,0.8);
   /* background-color: #26cef733; */
   height: auto;
+}
+
+.features p{
+  color: black;
 }
 
 .tools{
@@ -665,6 +669,20 @@ hr{
   font-weight: 700;
 }
 
+#createAcc{ /*for create account button*/
+  background-color: white;
+  color: #08AEEA;
+  border: 1px solid #0093E9;
+  border-radius: 10px;
+}
+
+#createAcc:hover{ /*for create account button*/
+  background-color: #08AEEA;
+  color: white;
+  border: 1px solid #0093E9;
+  border-radius: 0px;
+}
+
 #fileUplaodImg{
   height: 50px;
 }
@@ -686,6 +704,25 @@ hr{
    border-color: #08AEEA;
    border: 1px solid;
 }
+
+#tryNow{
+   background-color: white;
+   color: #26cef7;
+   padding: 10px;
+   font-size: 22px;
+   border-radius: 10px;
+}
+
+#tryNow:hover{
+  background-color: #26cef7;
+  color: white;
+  padding: 10px;
+  font-size: 22px;
+  border-radius: 10px;
+  transition: all 0.5s ease-out;
+}
+
+
 
 .imgUpload .col #fileUpload {
   /*For file upload button*/
@@ -717,11 +754,13 @@ hr{
 
 .modal-header {
   /*For the login popup(MOdal)*/
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     rgba(255, 110, 73, 1) 0%,
     rgba(205, 52, 185, 1) 100%
-  );
+  ); */
+  /* background-color: #0093E9; */
+  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
 }
 
 .modal-title h2 {
@@ -729,16 +768,18 @@ hr{
   color: #fff;
 }
 
+
 .modal-body h5 button {
   padding: 0;
   margin-left: auto;
   margin-right: auto;
   font-size: 30px;
-  background: -webkit-linear-gradient(
+  /* background: -webkit-linear-gradient(
     90deg,
     rgba(255, 110, 73, 1) 0%,
     rgba(205, 52, 185, 1) 100%
-  );
+  ); */
+  background: linear-gradient(160deg, #0093E9 0%, #80d0c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
