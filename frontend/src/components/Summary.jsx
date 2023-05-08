@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import copy from "copy-to-clipboard";
 import UploadImg from "./UploadImg";
 import Modal from "react-bootstrap/Modal";
@@ -9,6 +9,7 @@ import SummaryImg from "../images/clickl_summary.png";
 import FileUpload from "../images/fileUpload.png";
 import writing from "../images/creative-writing.png";
 import agreement from "../images/agreement.png";
+import * as htmlToImage from "html-to-image";
 
 const headingStyle = {
   color: "#ffff",
@@ -33,6 +34,8 @@ function Summary(props) {
   const [showaudio, setshowaudio] = useState(false);
   const [showtranslate, setShowTranslate] = useState(false);
   const [out, setOut] = useState("");
+  const [download, setdownload] = useState("");
+  const [showpipeline, setshowpipeline] = useState("");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -60,7 +63,7 @@ function Summary(props) {
     const end = out;
     if (inputText) {
       const response = await fetch(
-        "https://saavaad.serveo.net/translate_en_"+ end,
+        "https://saavaad.serveo.net/translate_en_" + end,
         // "http://192.168.34.133:12345/translate_hi_en",
         {
           method: "POST",
@@ -117,6 +120,8 @@ function Summary(props) {
   };
 
   const handleSubmit = async (event) => {
+    // setshowaudio(true);
+    // setShowTranslate(true);
     setOthers(false);
     setDisable(true);
     setIsActive(false);
@@ -139,6 +144,8 @@ function Summary(props) {
         }
       );
       const resultText = await response.json();
+      setdownload(true);
+      setshowpipeline(true);
       setTwoCols(true);
       setResultText(JSON.stringify(resultText));
       setOutlength(resultText.split(" ").length);
@@ -148,6 +155,18 @@ function Summary(props) {
       setIsActive(true);
       setBtntext("Start");
     }
+  };
+
+  const domEl = useRef(null);
+
+  const downloadImage = async () => {
+    const dataUrl = await htmlToImage.toPng(domEl.current);
+
+    // download image
+    const link = document.createElement("a");
+    link.download = "Summary.png";
+    link.href = dataUrl;
+    link.click();
   };
 
   const handleChange = (event) => {
@@ -205,7 +224,7 @@ function Summary(props) {
 
           {/* <img height="50px" src={writing} alt="decoration" /> */}
           {/* <hr style={{color:"#5D9C59", width: "100%"}} /> */}
-          <form 
+          <form
           // onSubmit={handleSubmit}
           >
             <div className="row">
@@ -229,8 +248,8 @@ function Summary(props) {
                 </h5>
               </div>
 
-              <div className="col-md-auto">
-                <output
+              <div className="col-md-auto" >
+                <output ref={domEl}
                   style={{
                     color: "Black",
                     backgroundColor: "white",
@@ -273,48 +292,65 @@ function Summary(props) {
                 <br />
                 <br />
               </div>
+              {download ? (
+                <div className="col">
+                  <button
+                    id="poemDownload"
+                    className="submitBtn"
+                    onClick={downloadImage}
+                  >
+                    download
+                  </button>
+                </div>
+              ) : null}
             </div>
-            <div className="row">
-              <div className="col pipeline1" onClick={showAudio}><h3>Lazy to read, Try Audio!</h3></div>
-              <div className="col pipeline1" onClick={showTranslate}><h3>Want in another language?</h3></div>
-            </div>
+            {showpipeline ? (
+              <div className="row">
+                <div className="col pipeline1" onClick={showAudio}>
+                  <h3>Lazy to read, Try Audio!</h3>
+                </div>
+                <div className="col pipeline1" onClick={showTranslate}>
+                  <h3>Want in another language?</h3>
+                </div>
+              </div>
+            ) : null}
 
             {showaudio ? (
               <div className="row">
-              <div className="col-md">
-                <button
-                  className={isActive ? "submitBtn" : "submitBtnDisable"}
-                  disabled={disable}
-                  type="submit"
-                  style={{ fontSize: "25px" }}
-                  onClick={handleSumAudio}
+                <div className="col-md">
+                  <button
+                    className={isActive ? "submitBtn" : "submitBtnDisable"}
+                    disabled={disable}
+                    type="submit"
+                    style={{ fontSize: "25px" }}
+                    onClick={handleSumAudio}
+                  >
+                    Audio
+                  </button>
+                  <br />
+                  <br />
+                </div>
+                <div
+                  className="col-md"
+                  style={{
+                    textAlign: "right",
+                  }}
                 >
-                  Audio
-                </button>
-                <br />
-                <br />
+                  <ReactAudioPlayer
+                    id="Mic"
+                    style={{ color: "#08AEEA" }}
+                    src={audio}
+                    autoPlay
+                    controls
+                  />
+                  {/* <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label> */}
+                </div>
               </div>
-              <div
-                className="col-md"
-                style={{
-                  textAlign: "right",
-                }}
-              >
-                <ReactAudioPlayer
-                  id="Mic"
-                  style={{ color: "#08AEEA" }}
-                  src={audio}
-                  autoPlay
-                  controls
-                />
-                {/* <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label> */}
-              </div>
-            </div>
             ) : null}
 
             {showtranslate ? (
-                <div className="row">
-                  <div className="col-md">
+              <div className="row">
+                <div className="col-md">
                   <select
                     style={{ width: "200px", color: "#0093E9" }}
                     className="form-select col-md-2"
@@ -329,36 +365,36 @@ function Summary(props) {
                     <option value="mr">Marathi</option>
                     <option value="ur">Urdu</option>
                   </select>{" "}
-                    <button
-                      className={isActive ? "submitBtn" : "submitBtnDisable"}
-                      disabled={disable}
-                      type="submit"
-                      style={{ fontSize: "25px" }}
-                      onClick={handleSumTrans}
-                    >
-                      Translate
-                    </button>
-                    <br />
-                    <br />
-                  </div>
-                  <div className="col-md">
-                    <output
-                      style={{
-                        color: "Black",
-                        backgroundColor: "white",
-                        border: "1px solid #95BDFF",
-                        borderRadius: "10px",
-                        width: "300px",
-                        height: "260px",
-                      }}
-                    >
-                      {result2Text}
-                      <div id="copyRes" onClick={copyToClipboard}>
-                        Copy
-                      </div>
-                    </output>
-                  </div>
+                  <button
+                    className={isActive ? "submitBtn" : "submitBtnDisable"}
+                    disabled={disable}
+                    type="submit"
+                    style={{ fontSize: "25px" }}
+                    onClick={handleSumTrans}
+                  >
+                    Translate
+                  </button>
+                  <br />
+                  <br />
                 </div>
+                <div className="col-md">
+                  <output
+                    style={{
+                      color: "Black",
+                      backgroundColor: "white",
+                      border: "1px solid #95BDFF",
+                      borderRadius: "10px",
+                      width: "300px",
+                      height: "260px",
+                    }}
+                  >
+                    {result2Text}
+                    <div id="copyRes" onClick={copyToClipboard}>
+                      Copy
+                    </div>
+                  </output>
+                </div>
+              </div>
             ) : null}
           </form>
         </div>

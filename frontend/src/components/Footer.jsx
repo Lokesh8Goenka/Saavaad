@@ -79,7 +79,11 @@ function Footer() {
             <Card.Body>
               <Card.Title>Kodi Rohit</Card.Title>
               <Card.Text>For ML modals</Card.Text>
-              <Button variant="primary">Contact</Button>
+              <Button variant="primary"
+                onClick={() =>
+                  (window.location = "mailto:kodirohit1234@gmail.com")
+                }
+              >Contact</Button>
             </Card.Body>
           </Card>
           <Card
@@ -90,7 +94,11 @@ function Footer() {
             <Card.Body>
               <Card.Title>Lokesh Goenka</Card.Title>
               <Card.Text>For Website</Card.Text>
-              <Button variant="primary">Contact</Button>
+              <Button variant="primary"
+                onClick={() =>
+                  (window.location = "mailto:goenkalokesh@gmail.com")
+                }
+              >Contact</Button>
             </Card.Body>
           </Card>
           <Card style={{ width: "18rem", border: "0"  }} className="col-md-auto">
@@ -98,7 +106,11 @@ function Footer() {
             <Card.Body>
               <Card.Title>Thilak D</Card.Title>
               <Card.Text>For Mobile Application</Card.Text>
-              <Button variant="primary">Contact</Button>
+              <Button variant="primary"
+                onClick={() =>
+                  (window.location = "mailto:saithilak04@gmail.com")
+                }
+              >Contact</Button>
             </Card.Body>
           </Card>
         </Modal.Body>

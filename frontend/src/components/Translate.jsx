@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CountUp from "react-countup";
 import ReactAudioPlayer from "react-audio-player";
-import $ from "jquery"
+import $ from "jquery";
+import * as htmlToImage from "html-to-image";
 
 const headingStyle = {
   color: "#fff",
@@ -28,6 +29,9 @@ function Translate(props) {
   const [srcName, setSrcName] = useState("");
   const [langs, setLangs] = useState([]);
   const [langName, setLangName] =useState("");
+  const [download, setdownload] = useState("");
+  const [showpipeline, setshowpipeline] = useState("");
+
   // let dis = "";
   useEffect(() => {
     if (langs.length === 0) {
@@ -63,7 +67,8 @@ function Translate(props) {
         }
       );
       const resultText = await response.json();
-
+      setdownload(true);
+      setshowpipeline(true)
       setTwoCols(true);
       setResultText(JSON.stringify(resultText));
       setOutlength(resultText.split(" ").length);
@@ -109,6 +114,18 @@ function Translate(props) {
     setShowSummary(true);
   }
 
+  const domEl = useRef(null);
+
+  const downloadImage = async () => {
+    const dataUrl = await htmlToImage.toPng(domEl.current);
+
+    // download image
+    const link = document.createElement("a");
+    link.download = "Translate.png";
+    link.href = dataUrl;
+    link.click();
+  };
+
   const handleSumAudio = async (event) => {
     event.preventDefault();
     setDisable(true);
@@ -152,7 +169,7 @@ function Translate(props) {
         <div style={{ backgroundColor: "white", borderRadius: "20px" }}>
           {/* <br /> */}
           <h2 id="heading">Translation</h2>
-          <form onSubmit={handleSubmit}>
+          <form >
             <div className="row">
               <select
                 style={{ width: "200px", color: "#0093E9" }}
@@ -240,8 +257,8 @@ function Translate(props) {
               </div>
 
               {twocols ? (
-                <div className="col">
-                  <output
+                <div className="col" ref={domEl}>
+                  <output 
                     style={{
                       color: "Black",
                       backgroundColor: "white",
@@ -259,7 +276,7 @@ function Translate(props) {
                   ) : null}
                 </div>
               ) : (
-                <div className="col" hidden>
+                <div className="col" hidden >
                   <output
                     style={{
                       color: "Black",
@@ -285,21 +302,36 @@ function Translate(props) {
                   className={isActive ? "submitBtn" : "submitBtnDisable"}
                   disable
                   type="submit"
+                  onClick={handleSubmit}
                 >
-                  {btntext}
+                  {btntext}  {/* translate*/}
                 </button>
                 <br />
                 <br />
               </div>
+              {download ? (
+                <div className="col">
+                  <button
+                    id="poemDownload"
+                    className="submitBtn"
+                    onClick={downloadImage}
+                  >
+                    download
+                  </button>
+                </div>
+              ) : null}
             </div>
-            <div className="row">
+            {showpipeline ? (<div className="row">
               <div className="col pipeline1" onClick={showAudio}>
                 <h3>Lazy to read, Hear it!</h3>
               </div>
               <div className="col pipeline1" onClick={showSummary}>
                 <h3>Want in another language?</h3>
               </div>
-            </div>
+            </div>) : null
+
+            }
+            
 
             {showaudio ? (
               <div className="row">

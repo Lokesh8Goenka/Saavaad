@@ -12,8 +12,10 @@ const h2Style = {
 
 function MyVerticallyCenteredModal(props) {
   const [signup, setSignup] = useState(false);
+  const [resultText, setResultText] = useState("");
+  const [resultText2, setResultText2] = useState("");
 
-  function handleSubmit(event) {
+  const handleLogin= async (event) => {
     event.preventDefault();
     console.log("Inside submit");
     const data = new FormData(event.currentTarget);
@@ -22,15 +24,19 @@ function MyVerticallyCenteredModal(props) {
       password: data.get("password"),
     };
 
-    fetch("https://login.serveo.net/login", {
+    const response = await fetch("https://saavaad.serveo.net/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      mode: "cors",
-      body: JSON.stringify(requestData),
+      // mode: "cors",
+      body: JSON.stringify({
+        text: requestData,
+      }),
     });
-
+    const resultText = await response.json();
+    setResultText2(JSON.stringify(resultText));
+    console.log(resultText2);
     //.then((response) => response.json())
     //.then((data) => {})
     //.catch((err) => {
@@ -43,17 +49,21 @@ function MyVerticallyCenteredModal(props) {
     setSignup(true);
   }
 
+  
+
   const [modalShow, setmodalShow] = useState(true);
   const [signupShow, setSignupShow] = useState(false);
 
   function handelVisible() {
-    console.log("reached");
-    setmodalShow(false);
+    //console.log("reached");
     setSignupShow(true);
+    setmodalShow(false);
   }
 
   return (
+    <div>
     <Modal
+      id="loginmod"
       show={modalShow}
       dialogClassName="loginModal"
       {...props}
@@ -67,7 +77,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleLogin}>
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" />
@@ -91,7 +101,7 @@ function MyVerticallyCenteredModal(props) {
           </Form.Group>
           <div className="row">
             <div className="col">
-              <Button type="submit">Submit</Button>
+              <Button id="loginSubmit" type="submit">Submit</Button>
             </div>
 
             <div className="col">
@@ -101,12 +111,13 @@ function MyVerticallyCenteredModal(props) {
                   Don't have an account?{" "}
                 </button>
               </Link>
-              <Signup show={signupShow} onHide={() => setSignupShow(false)} />
             </div>
           </div>
         </Form>
       </Modal.Body>
     </Modal>
+    <Signup show={signupShow} onHide={() => setSignupShow(false)} />
+    </div>
   );
 }
 

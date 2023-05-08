@@ -19,7 +19,7 @@ function Signup(props) {
     setloginShow(true);
   }
 
-  function handleSubmit(event) {
+  function handleSignup(event) {
     event.preventDefault();
     console.log("Inside submit");
     const data = new FormData(event.currentTarget);
@@ -29,7 +29,7 @@ function Signup(props) {
       password: data.get("password"),
     };
 
-    fetch("https://login.serveo.net/signup", {
+    fetch("https://saavaad.serveo.net/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function Signup(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSignup}>
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" />
