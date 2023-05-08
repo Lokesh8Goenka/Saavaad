@@ -10,6 +10,17 @@ export const Box = styled.div`
     padding: 70px 30px;
   }
 `;
+
+export const Boxlogin = styled.div`
+  padding: 80px 60px;
+  background: #White;
+  width: 100%;
+  
+   
+  @media (max-width: 1000px) {
+    padding: 70px 30px;
+  }
+`;
    
 export const Container = styled.div`
     display: flex;

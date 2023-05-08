@@ -4,7 +4,7 @@ import { Link } from "react-scroll";
 function Card(props) {
   return (
     <div className="feature">
-      <Link to="process" spy={true} smooth={true} offset={50} duration={500}>
+      <Link to="navbar" spy={true} smooth={true} offset={50} duration={500}>
         <div className="container" 
           onClick={() => {
             props.handleClick(props.title);

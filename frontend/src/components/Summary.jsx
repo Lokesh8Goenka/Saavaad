@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import copy from "copy-to-clipboard";
 import UploadImg from "./UploadImg";
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
 import CountUp from "react-countup";
-import ReactAudioPlayer from 'react-audio-player';
+import ReactAudioPlayer from "react-audio-player";
 import Mic from "../images/voice.png";
 import SummaryImg from "../images/clickl_summary.png";
 import FileUpload from "../images/fileUpload.png";
 import writing from "../images/creative-writing.png";
 import agreement from "../images/agreement.png";
+import * as htmlToImage from "html-to-image";
 
 const headingStyle = {
   color: "#ffff",
@@ -29,13 +31,23 @@ function Summary(props) {
   const [audio, setAudio] = useState();
   const [typedtext, setTypedText] = useState(false);
   const [others, setOthers] = useState(false);
+  const [showaudio, setshowaudio] = useState(false);
+  const [showtranslate, setShowTranslate] = useState(false);
+  const [out, setOut] = useState("");
+  const [download, setdownload] = useState("");
+  const [showpipeline, setshowpipeline] = useState("");
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [copyText, setCopyText] = useState("");
 
   function showTypedText() {
     setTypedText(!typedtext);
+  }
+
+  function handleOut(event) {
+    setOut(event.target.value);
   }
 
   const handleSumTrans = async (event) => {
@@ -43,16 +55,15 @@ function Summary(props) {
     setIsActive(false);
     setBtntext("Processing");
     setINlength(resultText.split(" ").length);
-    
 
     // const Src = src;
     // console.log(Src);
     // const end = "en";
     event.preventDefault();
-    
+    const end = out;
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/translate_en_hi",
+        "https://saavaad.serveo.net/translate_en_" + end,
         // "http://192.168.34.133:12345/translate_hi_en",
         {
           method: "POST",
@@ -65,7 +76,6 @@ function Summary(props) {
         }
       );
       const result2Text = await response.json();
-      setOthers(true);
       setTwoCols(true);
       setResult2Text(JSON.stringify(result2Text));
       setOutlength(result2Text.split(" ").length);
@@ -74,18 +84,18 @@ function Summary(props) {
       setIsActive(true);
       setBtntext("Start");
     }
-};
+  };
 
   const handleSumAudio = async (event) => {
     event.preventDefault();
+    setOthers(true);
     setDisable(true);
     setIsActive(false);
     setINlength(resultText.split(" ").length);
 
-   
     if (inputText) {
       const response = await fetch(
-        "https://clickl.serveo.net/text_audio",
+        "https://saavaad.serveo.net/text_audio",
         // "http://192.168.34.133:12345/text_audio",
         {
           method: "POST",
@@ -110,6 +120,9 @@ function Summary(props) {
   };
 
   const handleSubmit = async (event) => {
+    // setshowaudio(true);
+    // setShowTranslate(true);
+    setOthers(false);
     setDisable(true);
     setIsActive(false);
     setBtntext("Processing");
@@ -118,7 +131,7 @@ function Summary(props) {
     event.preventDefault();
     if (inputText) {
       const response = await fetch(
-         "https://clickl.serveo.net/text_summarize",
+        "https://saavaad.serveo.net/text_summarize",
         //"http://192.168.34.133:12345/text_summarize",
         {
           method: "POST",
@@ -131,10 +144,12 @@ function Summary(props) {
         }
       );
       const resultText = await response.json();
-
+      setdownload(true);
+      setshowpipeline(true);
       setTwoCols(true);
       setResultText(JSON.stringify(resultText));
       setOutlength(resultText.split(" ").length);
+      setCopyText(resultText);
       setResCount(true);
       setDisable(false);
       setIsActive(true);
@@ -142,10 +157,36 @@ function Summary(props) {
     }
   };
 
+  const domEl = useRef(null);
+
+  const downloadImage = async () => {
+    const dataUrl = await htmlToImage.toPng(domEl.current);
+
+    // download image
+    const link = document.createElement("a");
+    link.download = "Summary.png";
+    link.href = dataUrl;
+    link.click();
+  };
+
   const handleChange = (event) => {
     setInputText(event.target.value);
   };
 
+  const copyToClipboard = () => {
+    copy(copyText);
+    alert(`You have copied "${copyText}"`);
+  };
+
+  function showAudio() {
+    setShowTranslate(false);
+    setshowaudio(true);
+  }
+
+  function showTranslate() {
+    setshowaudio(false);
+    setShowTranslate(true);
+  }
   // const [hover, setHover] = useState(false);
 
   // function hoverON() {
@@ -156,35 +197,43 @@ function Summary(props) {
   // }
 
   return (
-    <div className="summary" id="summary" >
+    <div className="summary" id="summary">
       {/* <h1 style={headingStyle}>{props.title}</h1> */}
-        <div className="container">
-          {/* <div> */}
-            {/* <UploadImg /> <br /> */}
-            {/* <br /> */}
-          {/* </div> */}
+      <div className="container">
+        {/* <div> */}
+        {/* <UploadImg /> <br /> */}
+        {/* <br /> */}
+        {/* </div> */}
 
-          {/* <h1 id="customText"   
+        {/* <h1 id="customText"   
           // style={{ color: hover ? "cd34b9" : "13183e" }}
           // onMouseOver={hoverON}
           // onMouseOut={hoverOff}
           // onClick={showTypedText}
           // >Custom Text</h1>*/}
 
-          <br />
-          <div style={{backgroundColor: "white", borderRadius: "20px"}}>
-            <br />
-          <img height="50px" src={agreement} alt="decoration" />
-          <h2 id="heading">Summarizer</h2>
+        <br />
+        <div style={{ backgroundColor: "white", borderRadius: "20px" }}>
+          {/* <br /> */}
+          <div id="headingTools">
+            <h2 id="heading" style={{ color: "white" }}>
+              Summarizer
+            </h2>
+          </div>
+          {/* <img height="50px" src={agreement} alt="decoration" /> */}
+
           {/* <img height="50px" src={writing} alt="decoration" /> */}
-          <hr style={{color:"#5D9C59", width: "100%"}} />
-          <form onSubmit={handleSubmit}>
+          {/* <hr style={{color:"#5D9C59", width: "100%"}} /> */}
+          <form
+          // onSubmit={handleSubmit}
+          >
             <div className="row">
               <div className="col-md-auto">
                 <label htmlFor="text-input"></label>
-                <textarea 
+
+                <textarea
                   className="scroll"
-                  style={{ overflow: "scroll"}}
+                  style={{ overflow: "scroll" }}
                   type="text"
                   cols="80"
                   rows="10"
@@ -192,14 +241,15 @@ function Summary(props) {
                   value={inputText}
                   onChange={handleChange}
                 />
+
                 <h5 style={{ color: "#609966" }}>
                   Total Words:
                   <CountUp start={0} end={inlength} duration={3} />
                 </h5>
               </div>
 
-              <div className="col-md-auto">
-                <output 
+              <div className="col-md-auto" >
+                <output ref={domEl}
                   style={{
                     color: "Black",
                     backgroundColor: "white",
@@ -207,16 +257,22 @@ function Summary(props) {
                     maxWidth: "400px",
                     height: "260px",
                     border: "1px solid #95BDFF",
-                    borderRadius: "10px"
+                    borderRadius: "10px",
                   }}
                 >
                   {resultText}
                 </output>
                 {resCount ? (
-                  <h5 style={{ color: "#0093E9"}}>
-                    Total Words:
-                    <CountUp start={0} end={outlength} duration={3} />
-                  </h5>
+                  <div>
+                    <br />
+                    <div id="copyRes" onClick={copyToClipboard}>
+                      Copy
+                    </div>
+                    <h5 style={{ color: "#0093E9" }}>
+                      Total Words:
+                      <CountUp start={0} end={outlength} duration={3} />
+                    </h5>
+                  </div>
                 ) : null}
               </div>
             </div>
@@ -229,83 +285,126 @@ function Summary(props) {
                   className={isActive ? "submitBtn" : "submitBtnDisable"}
                   disabled={disable}
                   type="submit"
+                  onClick={handleSubmit}
                 >
-                  {btntext}
+                  {btntext} {/* Start */}
                 </button>
                 <br />
                 <br />
               </div>
+              {download ? (
+                <div className="col">
+                  <button
+                    id="poemDownload"
+                    className="submitBtn"
+                    onClick={downloadImage}
+                  >
+                    download
+                  </button>
+                </div>
+              ) : null}
             </div>
-
-            {others ? 
+            {showpipeline ? (
               <div className="row">
-              <div className="col">
-                <button
-                  className={isActive ? "submitBtn" : "submitBtnDisable"}
-                  disabled={disable}
-                  type="submit"
-                  style={{fontSize:"25px"}}
-                  onClick={handleSumAudio()}
-                >
-                  Audio
-                </button>
-                <br />
-                <br />
+                <div className="col pipeline1" onClick={showAudio}>
+                  <h3>Lazy to read, Try Audio!</h3>
+                </div>
+                <div className="col pipeline1" onClick={showTranslate}>
+                  <h3>Want in another language?</h3>
+                </div>
               </div>
-              <div className="col" style={{
-                        textAlign:"right"
-                      }}>
+            ) : null}
 
-                <ReactAudioPlayer
-                  id="Mic"
-                  style={{visibility: "hidden"}}
-                  src={audio}
-                  autoPlay
-                  controls
-                />
-                <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label>
-              </div>
-               <div className="col">
-                <button
-                  className={isActive ? "submitBtn" : "submitBtnDisable"}
-                  disabled={disable}
-                  type="submit"
-                  style={{fontSize:"25px"}}
-                  onClick={handleSumTrans}
+            {showaudio ? (
+              <div className="row">
+                <div className="col-md">
+                  <button
+                    className={isActive ? "submitBtn" : "submitBtnDisable"}
+                    disabled={disable}
+                    type="submit"
+                    style={{ fontSize: "25px" }}
+                    onClick={handleSumAudio}
+                  >
+                    Audio
+                  </button>
+                  <br />
+                  <br />
+                </div>
+                <div
+                  className="col-md"
+                  style={{
+                    textAlign: "right",
+                  }}
                 >
-                  Translate
-                </button>
-                <br />
-                <br />
+                  <ReactAudioPlayer
+                    id="Mic"
+                    style={{ color: "#08AEEA" }}
+                    src={audio}
+                    autoPlay
+                    controls
+                  />
+                  {/* <label htmlFor="Mic"><img height="50px" src={Mic} alt="Mic" /></label> */}
+                </div>
               </div>
-              <div className="col">
-              <output
+            ) : null}
+
+            {showtranslate ? (
+              <div className="row">
+                <div className="col-md">
+                  <select
+                    style={{ width: "200px", color: "#0093E9" }}
+                    className="form-select col-md-2"
+                    aria-label="Default select example"
+                    // value={frm}
+                    onChange={handleOut}
+                  >
+                    <option defaultValue>To: </option>
+                    <option value="hi">Hindi</option>
+                    <option value="ml">Malayalam</option>
+                    <option value="bn">Bengali</option>
+                    <option value="mr">Marathi</option>
+                    <option value="ur">Urdu</option>
+                  </select>{" "}
+                  <button
+                    className={isActive ? "submitBtn" : "submitBtnDisable"}
+                    disabled={disable}
+                    type="submit"
+                    style={{ fontSize: "25px" }}
+                    onClick={handleSumTrans}
+                  >
+                    Translate
+                  </button>
+                  <br />
+                  <br />
+                </div>
+                <div className="col-md">
+                  <output
                     style={{
                       color: "Black",
                       backgroundColor: "white",
+                      border: "1px solid #95BDFF",
+                      borderRadius: "10px",
                       width: "300px",
-                      height: "260px"
+                      height: "260px",
                     }}
                   >
                     {result2Text}
+                    <div id="copyRes" onClick={copyToClipboard}>
+                      Copy
+                    </div>
                   </output>
+                </div>
               </div>
-            </div>
-            :null}
-            
-          </form> 
-          </div>
-           
-          
-          
+            ) : null}
+          </form>
         </div>
-        <br />
-        {/* <UploadImg show={show} onHide={handleClose} /> */}
+      </div>
+      <br />
+      {/* <UploadImg show={show} onHide={handleClose} /> */}
     </div>
   );
 }
 
 export default Summary;
-
 
 // On Monday, Congress' former Lok Sabha MP Rahul Gandhi arrived Gujarat's Surat where he filed an appeal in a sessions court against a lower court order that found him guilty of criminal defamation for his ‘all thieves have Modi surname’ remark. The court accepted his petition and posted it for hearing on April 13. On March 24, barely twenty-four hours after a lower court in the city found Gandhi guilty of defaming the entire Modi community in a case filed by BJP MLA Purnesh Modi, the ex-Congress president was disqualified from Lok Sabha under a rule which bars convicted MPs from holding Lok Sabha membership.

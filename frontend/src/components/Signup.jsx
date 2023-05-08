@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Signup from "./Signup.jsx";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -10,61 +9,45 @@ const h2Style = {
   marginRight: "right",
 };
 
-function MyVerticallyCenteredModal(props) {
-  const [signup, setSignup] = useState(false);
-  const [resultText, setResultText] = useState("");
-  const [resultText2, setResultText2] = useState("");
+function Signup(props) {
+  const [show, setShow] = React.useState(true);
+  const [loginShow, setloginShow] = React.useState(false);
 
-  const handleLogin= async (event) => {
+  function handelVisible() {
+    console.log("reached");
+    setShow(false);
+    setloginShow(true);
+  }
+
+  function handleSignup(event) {
     event.preventDefault();
     console.log("Inside submit");
     const data = new FormData(event.currentTarget);
     const requestData = {
       username: data.get("username"),
+      email: data.get("email"),
       password: data.get("password"),
     };
 
-    const response = await fetch("https://saavaad.serveo.net/login", {
+    fetch("https://saavaad.serveo.net/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      // mode: "cors",
-      body: JSON.stringify({
-        text: requestData,
-      }),
-    });
-    const resultText = await response.json();
-    setResultText2(JSON.stringify(resultText));
-    console.log(resultText2);
-    //.then((response) => response.json())
-    //.then((data) => {})
-    //.catch((err) => {
-    // console.log(err);
-    //});
-    //console.log(data);
-  }
-
-  function handleClick() {
-    setSignup(true);
-  }
-
-  
-
-  const [modalShow, setmodalShow] = useState(true);
-  const [signupShow, setSignupShow] = useState(false);
-
-  function handelVisible() {
-    //console.log("reached");
-    setSignupShow(true);
-    setmodalShow(false);
+      mode: "cors",
+      body: JSON.stringify(requestData),
+    })
+      .then((response) => response.json())
+      .then((data) => {})
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
-    <div>
     <Modal
-      id="loginmod"
-      show={modalShow}
+      show={show}
+      // onHide={setShow(false)}
       dialogClassName="loginModal"
       {...props}
       size="lg"
@@ -73,11 +56,11 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h2 style={h2Style}>Save Your Clicks!</h2>
+          <h2 style={h2Style}>SignUp!</h2>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form onSubmit={handleLogin}>
+        <Form onSubmit={handleSignup}>
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" placeholder="Enter email" />
@@ -92,6 +75,11 @@ function MyVerticallyCenteredModal(props) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Email</Form.Label>
+            <Form.Control type="text" placeholder="User Email" name="email" />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -99,26 +87,11 @@ function MyVerticallyCenteredModal(props) {
               name="password"
             />
           </Form.Group>
-          <div className="row">
-            <div className="col">
-              <Button id="loginSubmit" type="submit">Submit</Button>
-            </div>
-
-            <div className="col">
-              <Link>
-                <button id="createAcc" onClick={handelVisible}>
-                  {" "}
-                  Don't have an account?{" "}
-                </button>
-              </Link>
-            </div>
-          </div>
+          <Button type="submit">Signup</Button>
         </Form>
       </Modal.Body>
     </Modal>
-    <Signup show={signupShow} onHide={() => setSignupShow(false)} />
-    </div>
   );
 }
 
-export default MyVerticallyCenteredModal;
+export default Signup;
