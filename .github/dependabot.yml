@@ -1,0 +1,32 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+version: 2
+updates:
+  - package-ecosystem: npm  # Assuming these are Node.js packages
+    directory: "/"  # Change this if your package.json is in a subdirectory
+    schedule: weekly
+    filters:
+      - component:
+          name: webpack
+      - component:
+          name: tough-cookie
+      - component:
+          name: semver
+      - component:
+          name: mongoose
+      - component:
+          name: word-wrap
+      - component:
+          name: "@adobe/css-tools"
+      - component:
+          name: mongodb
+      - component:
+          name: postcss
+      - component:
+          name: "@babel/traverse"
+      - component:
+          name: follow-redirects
+      - component:
+          name: ip
